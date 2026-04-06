@@ -1,0 +1,33 @@
+.clientsMarquee {
+
+}
+
+
+.marqueeContainer {
+  display: flex;
+  width: max-content;
+  /* Важно: название анимации будет локальным для этого модуля */
+  animation: marquee 25s linear infinite;
+
+  .marqueeItem {
+    display: block;
+    align-items: center;
+    justify-content: center;
+    width: 280px;
+    height: 130px;
+  }
+
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
+}

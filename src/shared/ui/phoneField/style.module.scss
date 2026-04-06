@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-family: sans-serif;
+  .label {
+    font-size: 14px;
+  }
+
+  .inputWrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    padding: 5px 10px;
+    transition: border-color 0.2s;
+    height: 33px;
+background-color: #111;
+    &:focus-within {
+      border-color: #0070f3;
+      box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.2);
+    }
+    &.errorInput {
+      border-color: #ff4d4f;
+      box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.2);
+    }
+    // Customizing the library internal classes
+    :global(.PhoneInputInput) {
+      border: none;
+      outline: none;
+      font-size: 14px;
+      margin-left: 10px;
+      width: 100%;
+    }
+
+    :global(.PhoneInputCountrySelect) {
+      cursor: pointer;
+    }
+  }
+
+  .errorInput {
+    border-color: #ff4d4f !important;
+  }
+
+  .errorMessage {
+    font-size: 12px;
+    color: #ff4d4f;
+    margin-top: 4px;
+  }
+}

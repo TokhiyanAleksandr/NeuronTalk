@@ -1,0 +1,32 @@
+.banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin:  auto ;
+  overflow: hidden;
+
+  h1 {
+    font-size: 4.5rem;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  p {
+    padding: 4rem 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+    max-width: 640px;
+  }
+
+  .leftContent {
+    max-width: 960px;
+    padding-left: 20px;
+    margin-left: 110px;  }
+
+  .imgContent {
+    width: 100%;
+    max-width: 768px;
+    margin-right: -70px;
+    //box-shadow: 0 0 3px red;
+  }
+}

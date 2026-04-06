@@ -1,0 +1,56 @@
+*** Structure Scheme ***
+
+Header (
+    Logo ,
+    Services(
+        strategy, digital, design, human, ... (dynamic page)
+        all Services,
+    ),
+    Works,
+    Conferences,
+    Insights,
+    About,
+    Contact,
+)
+
+Footer (
+
+)
+
+
+src/
+ ├─ app/                    
+ │   ├─ (routes)/           # маршруты, layout'ы
+ │   │   ├─ dashboard/
+ │   │   └─ auth/
+ │   ├─ api/                # серверные роуты /api
+ │   ├─ globals.css
+ │   └─ layout.tsx
+ │
+ ├─ shared/                 # базовые переиспользуемые вещи
+ │   ├─ ui/                 # кнопки, инпуты, маленькие компоненты
+ │   ├─ lib/                # утилы, helpers, formatters
+ │   ├─ config/             # env, настройки
+ │   ├─ hooks/              # общие кастомные хуки
+ │   └─ types/              # общие TS типы
+ │
+ ├─ entities/               # сущности: User, Product, Order
+ │   └─ user/
+ │       ├─ model.ts
+ │       ├─ api.ts
+ │       └─ ui.tsx
+ │
+ ├─ features/               # функциональные куски
+ │   ├─ auth/
+ │   │   ├─ login-form/
+ │   │   └─ logout-button/
+ │   └─ cart/
+ │       └─ add-to-cart/
+ │
+ ├─ widgets/                # крупные UI-блоки (хедер, дашборд-блоки)
+ │   ├─ header/
+ │   └─ footer/
+ │
+ ├─ processes/              # редко нужно — onboarding, auth-flow
+ │
+ └─ pages/                  # если нужен CSR роутинг (обычно пусто)

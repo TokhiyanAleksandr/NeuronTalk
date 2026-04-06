@@ -1,0 +1,72 @@
+.viewport {
+  height: 100vh;
+  overflow: hidden; // Убираем нативный скроллбар, работаем через JS
+  position: relative;
+  background: #050505;
+}
+
+.section {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.avatarStack {
+  display: flex;
+  align-items: center;
+  padding-left: 15px; // Компенсация для центровки, если нужно
+
+  .avatar {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #8e8e8e; // Цвет фона, чтобы создать "разрез"
+    overflow: hidden;
+    margin-left: -15px; // Наложение аватарок друг на друга
+    transition: transform 0.3s ease;
+    background: #222; // Цвет заглушки, пока грузится фото
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    // Эффект при наведении (опционально)
+    &:hover {
+      transform: translateY(-5px);
+      z-index: 10;
+    }
+
+    // Третья аватарка со слоем
+    &.last {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7); // Тот самый черный слой
+        color: #fff;
+        font-family: sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        letter-spacing: 0.5px;
+      }
+    }
+  }
+}
+
+
+/****************************/

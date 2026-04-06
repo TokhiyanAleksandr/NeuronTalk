@@ -1,0 +1,108 @@
+.contact {
+  position: relative;
+  background: #000;
+  border-radius: 28px;
+  padding: 0 30px;
+  overflow: hidden;
+  isolation: isolate;
+  height: 800px;
+
+  /* Глубина контейнера */
+  //box-shadow: 0 60px 160px rgba(0, 0, 0, 0.9),
+  //0 0 0 1px rgba(255, 255, 255, 0.02),
+  //inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+
+    background: linear-gradient(
+                    to bottom,
+                    rgb(99, 99, 99, 0) 0%,
+                    rgb(99, 99, 99, .2) 20%,
+                    rgb(99, 99, 99, .3) 30%,
+                    rgb(99, 99, 99, .5) 50%,
+                    rgb(99, 99, 99, .7) 70%,
+                    rgb(99, 99, 99, 1) 100%
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: -280px;
+    bottom: -280px;
+    width: 800px;
+    height: 800px;
+
+    background: radial-gradient(
+                    circle at center,
+                    rgba(0, 255, 180, 0.4) 0%,
+                    rgba(0, 255, 180, 0.25) 20%,
+                    rgba(0, 255, 180, 0.12) 40%,
+                    rgba(0, 255, 180, 0.05) 55%,
+                    transparent 70%
+    );
+
+    filter: blur(140px);
+    opacity: 0.9;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+    .topGlow {
+      position: absolute;
+      left: -200px;
+      top: -200px;
+      width: 600px;
+      height: 600px;
+
+      background: radial-gradient(
+                      circle at center,
+                      rgba(0, 180, 255, 0.25) 0%,
+                      rgba(0, 180, 255, 0.12) 30%,
+                      transparent 70%
+      );
+
+      filter: blur(120px);
+      z-index: 1;
+      pointer-events: none;
+    }
+  .formGroup {
+    display: flex;
+    column-gap: 50px;
+    justify-content: center;
+  }
+
+  .content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 30px;
+    position: relative;
+    width: 30%;
+
+
+
+    .info {
+      max-width: 360px;
+      display: flex;
+      flex-direction: column;
+      row-gap: 20px;
+      z-index: 9;
+    }
+
+  }
+}

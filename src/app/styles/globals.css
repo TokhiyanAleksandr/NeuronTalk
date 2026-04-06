@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /*--background: #0a0a0a;*/
+    --background: #000;
+    --foreground: #ededed;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  /* Более медленный скролл */
+  scroll-snap-type: y proximity;
+}
+.serif{
+  font-family: var(--font-source-serif) !important;
+}
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-barlow);
+  overflow-x: hidden;
+  /* Более медленный и плавный скролл */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Замедленный скролл с более твёрдым эффектом */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Кастомный scrollbar для лучшего визуального эффекта */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4d4d8;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1aa;
+}
+
+@media (prefers-color-scheme: dark) {
+  ::-webkit-scrollbar-thumb {
+    background: #3f3f46;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #52525b;
+  }
+}
+
+/* Замедление скролла для Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #d4d4d8 transparent;
+}
+* {
+  /*box-shadow:  0 0 3px red;*/
+}
+
+@media (prefers-color-scheme: dark) {
+  * {
+    scrollbar-color: #3f3f46 transparent;
+  }
+}
