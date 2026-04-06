@@ -36,19 +36,8 @@ const services = [
         icon: "/icon.png",
     },
 ];
-const getData = async () => {
-    return services
-}
 
 export const OurServices = () => {
-    const [data, setData] = useState<any>([])
-
-    useEffect(() => {
-        getData().then(res => {
-            setData(res)
-        })
-    }, [])
-
     return (
         <Section>
             <motion.div
@@ -67,7 +56,7 @@ export const OurServices = () => {
             </motion.div>
 
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {data.map((service, index) => (
+                {services.map((service, index) => (
                     <motion.div
                         key={service.title}
                         initial={{opacity: 0, y: 40}}
