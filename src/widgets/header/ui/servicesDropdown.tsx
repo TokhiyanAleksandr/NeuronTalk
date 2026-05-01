@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 import { LearnMoreLink } from "@/shared/ui/learnMoreLink";
 
 const services = [
-    { id: "strategy", title: "Strategy", href: "/services/strategy", color: "#fff", bgColor: "#041547", image: "/strategy-head.jpg" },
-    { id: "digital", title: "Digital", href: "/services/digital", color: "#fff", bgColor: "#00A8AA", image: "/digital-head.png" },
-    { id: "design", title: "Design", href: "/services/design", color: "#000", bgColor: "#FAE232", image: "/design-head.jpg" },
-    { id: "human", title: "Human", href: "/services/human", color: "#000", bgColor: "#FF968D", image: "/human-head.jpg" },
+    { id: "strategy", title: "Neuromarketing Strategy", href: "/services/strategy", color: "#fff", bgColor: "#041547", image: "/strategy-head.jpg" },
+    { id: "digital", title: "Website Creation", href: "/services/digital", color: "#fff", bgColor: "#00A8AA", image: "/digital-head.png" },
+    { id: "design", title: "UX/UI Design", href: "/services/design", color: "#000", bgColor: "#FAE232", image: "/design-head.jpg" },
+    { id: "human", title: "AI-Powered Growth & Automation", href: "/services/human", color: "#000", bgColor: "#FF968D", image: "/human-head.jpg" },
 ];
 
 export function ServicesDropdown({ onClose }: { onClose: () => void }) {

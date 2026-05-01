@@ -1,39 +1,37 @@
 import {SlideButton} from "@/shared/ui/slideButton";
 import {Section} from "@/shared/ui/section";
+import {HomeResponse} from "@/entities/home/Model/type";
 
+interface IProps {
+    data: HomeResponse['get_in_touch']
+}
 
-export const DifferentBrains = () => {
+export const DifferentBrains = ({data}: IProps) => {
     return (
         <div>
             <div className="flex justify-center bg-[#fe968e]">
                 <Section className="mb-0! w-full flex items-center justify-between ">
                     <div className="max-w-177.5  text-black px-[10px]">
                         <h2 className="serif text-[3.75rem] leading-12 font-semibold">
-                            Different brains, the same heart
+                            {data.title}
                         </h2>
                         <p className="my-10 text-[1.125rem] font-medium">
-                            At our agency, you’ll have the opportunity to showcase your skills. Explore our current
-                            vacancies, reach out to us, and we hope to welcome you soon to our dynamic team of
-                            communication
-                            professionals. Build your career and contribute to groundbreaking brand strategies that
-                            make
-                            an
-                            impact and a difference.
+                            {data.description}
                         </p>
 
                         <SlideButton
-                            href="/contact"
+                            href={data.button_link || "contact"}
                             textColor="white"
                             bgColor="black"
                             borderColor="black"
                             hoverBgColor="white"
                             hoverTextColor="black"
                         >
-                            Get in touch
+                            {data.button_title}
                         </SlideButton>
                     </div>
                     <div className="w-full max-w-206.5">
-                        <img src="/careers.webp" alt="" title=""/>
+                        <img src={data.image || ""} alt="" title=""/>
                     </div>
                 </Section>
             </div>

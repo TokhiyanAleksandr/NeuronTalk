@@ -21,13 +21,13 @@
     padding: 1px;
 
     background: linear-gradient(
-                    to bottom,
-                    rgb(99, 99, 99, 0) 0%,
-                    rgb(99, 99, 99, .2) 20%,
-                    rgb(99, 99, 99, .3) 30%,
-                    rgb(99, 99, 99, .5) 50%,
-                    rgb(99, 99, 99, .7) 70%,
-                    rgb(99, 99, 99, 1) 100%
+            to bottom,
+            rgb(99, 99, 99, 0) 0%,
+            rgb(99, 99, 99, .2) 20%,
+            rgb(99, 99, 99, .3) 30%,
+            rgb(99, 99, 99, .5) 50%,
+            rgb(99, 99, 99, .7) 70%,
+            rgb(99, 99, 99, 1) 100%
     );
     -webkit-mask: linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
@@ -47,12 +47,12 @@
     height: 800px;
 
     background: radial-gradient(
-                    circle at center,
-                    rgba(0, 255, 180, 0.4) 0%,
-                    rgba(0, 255, 180, 0.25) 20%,
-                    rgba(0, 255, 180, 0.12) 40%,
-                    rgba(0, 255, 180, 0.05) 55%,
-                    transparent 70%
+            circle at center,
+            rgba(0, 255, 180, 0.4) 0%,
+            rgba(0, 255, 180, 0.25) 20%,
+            rgba(0, 255, 180, 0.12) 40%,
+            rgba(0, 255, 180, 0.05) 55%,
+            transparent 70%
     );
 
     filter: blur(140px);
@@ -61,24 +61,25 @@
     pointer-events: none;
   }
 
-    .topGlow {
-      position: absolute;
-      left: -200px;
-      top: -200px;
-      width: 600px;
-      height: 600px;
+  .topGlow {
+    position: absolute;
+    left: -200px;
+    top: -200px;
+    width: 600px;
+    height: 600px;
 
-      background: radial-gradient(
-                      circle at center,
-                      rgba(0, 180, 255, 0.25) 0%,
-                      rgba(0, 180, 255, 0.12) 30%,
-                      transparent 70%
-      );
+    background: radial-gradient(
+            circle at center,
+            rgba(0, 180, 255, 0.25) 0%,
+            rgba(0, 180, 255, 0.12) 30%,
+            transparent 70%
+    );
 
-      filter: blur(120px);
-      z-index: 1;
-      pointer-events: none;
-    }
+    filter: blur(120px);
+    z-index: 1;
+    pointer-events: none;
+  }
+
   .formGroup {
     display: flex;
     column-gap: 50px;
@@ -93,7 +94,6 @@
     row-gap: 30px;
     position: relative;
     width: 30%;
-
 
 
     .info {

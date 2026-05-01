@@ -1,11 +1,13 @@
 "use client";
 
 import {motion} from "framer-motion";
-import {Container} from "@/shared/ui/container";
 import Link from "next/link";
 import styles from './style.module.scss'
 import {ParallaxGrid} from "@/shared/ui/ParallaxGrid";
 import {Insights} from "@/entities/insight/Insights";
+
+import { useParams } from "next/navigation";
+import {useEffect, useState} from "react";
 
 const processSteps = [
     {
@@ -51,7 +53,7 @@ const insights = [
         title: "How design thinking can redefine the future of construction",
         type:"News",
         category: "Strategy",
-        img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop",
         side: 'left'
     },
     {
@@ -59,7 +61,7 @@ const insights = [
         title: "The role of emotional intelligence in brand identity and architecture",
         type:"Blog",
         category: "Branding",
-        img: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop",
         side: 'right'
     },
     {
@@ -67,11 +69,174 @@ const insights = [
         title: "Why minimalism is the ultimate sophistication in digital space",
         type:"News",
         category: "Digital",
-        img: "https://images.unsplash.com/photo-1507413245164-6160d8298b31?q=80&w=2070&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1507413245164-6160d8298b31?q=80&w=2070&auto=format&fit=crop",
         side: 'left'
     },
 ];
+const DATA_BY_TYPE = {
+    neuromarketing: {
+        hero: {
+            description:
+                "We use neuroscience and behavioral psychology to increase conversions and influence user decisions.",
+        },
+        sectionTitle: "Neuromarketing Strategy",
+        processSteps: [
+            { title: "User Psychology", description: "Understand subconscious behavior patterns." },
+            { title: "Emotional Triggers", description: "Identify what drives decisions." },
+            { title: "Conversion Optimization", description: "Turn insights into revenue." },
+            { title: "A/B Testing", description: "Validate behavior-driven changes." },
+        ],
+        projects: [
+            {
+                id: 1,
+                title: "Neuromarketing for E-commerce Growth",
+                category: "Psychology",
+                img: "/services/design/project-1.jpeg",
+                side: "left",
+            },
+        ],
+        insights: [
+            {
+                id: 1,
+                title: "How emotions drive 90% of decisions",
+                type: "News",
+                category: "Behavior",
+                image:
+                    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab",
+                side: "left",
+            },
+        ],
+    },
+
+    website: {
+        hero: {
+            description:
+                "We build fast, scalable and modern websites that convert visitors into customers.",
+        },
+        sectionTitle: "Website Creation",
+        processSteps: [
+            { title: "UX Planning", description: "Define user flow and structure." },
+            { title: "UI Design", description: "Create modern interfaces." },
+            { title: "Development", description: "Build high-performance websites." },
+            { title: "Optimization", description: "Improve speed and SEO." },
+        ],
+        projects: [
+            {
+                id: 1,
+                title: "Luxury Real Estate Website",
+                category: "Web",
+                img: "/services/design/project-2.jpg",
+                side: "right",
+            },
+        ],
+        insights: [
+            {
+                id: 1,
+                title: "Why website speed affects conversion rate",
+                type: "Blog",
+                category: "Web",
+                image:
+                    "https://images.unsplash.com/photo-1497366216548-37526070297c",
+                side: "right",
+            },
+        ],
+    },
+
+    uiux: {
+        hero: {
+            description:
+                "We design intuitive interfaces focused on usability and product growth.",
+        },
+        sectionTitle: "UX/UI Design",
+        processSteps: [
+            { title: "Research", description: "Understand user needs." },
+            { title: "Wireframes", description: "Create structure." },
+            { title: "UI Design", description: "Design clean interfaces." },
+            { title: "Testing", description: "Improve usability." },
+        ],
+        projects: [
+            {
+                id: 1,
+                title: "Mobile Banking App UX",
+                category: "Fintech",
+                img: "/services/design/project-1.jpeg",
+                side: "left",
+            },
+        ],
+        insights: [
+            {
+                id: 1,
+                title: "Why UX is more important than UI",
+                type: "Blog",
+                category: "UX",
+                image:
+                    "https://images.unsplash.com/photo-1507413245164-6160d8298b31",
+                side: "left",
+            },
+        ],
+    },
+
+    ai: {
+        hero: {
+            description:
+                "We build AI systems that automate workflows and scale business performance.",
+        },
+        sectionTitle: "AI Automation & Growth",
+        processSteps: [
+            { title: "Data Collection", description: "Analyze business data." },
+            { title: "AI Models", description: "Build predictive systems." },
+            { title: "Automation", description: "Automate workflows." },
+            { title: "Scaling", description: "Increase efficiency." },
+        ],
+        projects: [
+            {
+                id: 1,
+                title: "AI Marketing Automation System",
+                category: "AI",
+                img: "/services/design/project-2.jpg",
+                side: "right",
+            },
+        ],
+        insights: [
+            {
+                id: 1,
+                title: "How AI is changing marketing",
+                type: "News",
+                category: "AI",
+                image:
+                    "https://images.unsplash.com/photo-1531746790731-6c087fecd65a",
+                side: "right",
+            },
+        ],
+    },
+};
+
+
+const getData = async (type: string) => {
+    await new Promise((res) => setTimeout(res, 300));
+
+    fetch(`http://localhost:3000/api/services/${type}`)
+        .then(res => res.json())
+        .then(data => data)
+
+    return DATA_BY_TYPE[type as keyof typeof DATA_BY_TYPE] || DATA_BY_TYPE.ai;
+};
+
 export default function DesignServicesPage() {
+    const { type } = useParams();
+
+    const [data, setData] = useState<any>(null);
+
+    useEffect(() => {
+        if (!type) return;
+
+        getData(type as string).then((res) => setData(res));
+    }, [type]);
+
+    if (!data) {
+        return <div className="p-10">Loading...</div>;
+    }
+
     return (
         <>
             <div className="bg-[#FAE232] text-black px-[10px]">
@@ -80,7 +245,7 @@ export default function DesignServicesPage() {
                         <div className="pt-[50px] relative z-1 max-w-[1160px]">
                             <p className="mb-15 text-[21px] uppercase font-semibold tracking-[3px]">Design</p>
                             <h1 className="leading-20 text-black font-semibold   serif text-[80px]">
-                                Optimal design of offline and online communications.
+                                {data.hero.description}
                             </h1>
                             <p className="max-w-[825px] mt-15 text-[24px] font-medium">
                                 We help you create an eye-catching way to distinguish your brand from others. For the
@@ -196,12 +361,11 @@ export default function DesignServicesPage() {
 
             </div>
             <div className="max-w-420 m-auto mb-40">
-                <ParallaxGrid projects={projects}/>
+                {/*<ParallaxGrid projects={projects}/>*/}
             </div>
 
-            <Insights insights={insights}/>
+            {/*<Insights insights={insights}/>*/}
         </>
 
-    )
-        ;
+    );
 }

@@ -1,9 +1,10 @@
-import {getInsights} from "@/entities/insight/api";
 import {Metadata} from "next";
 import {Section} from "@/shared/ui/section";
 import {MainSection} from "@/shared/ui/mainSection";
 import {HeadSection} from "@/shared/ui/headSection";
-import {InsightsList} from "./insightsList"; // Импортируйте созданный выше компонент
+import {InsightsList} from "./insightsList";
+import {getBlogsData} from "@/entities/insight/Model/api";
+import {getInsights} from "@/entities/insight/api";
 
 export const metadata: Metadata = {
     title: "Blog | Neuron Talk",
@@ -11,18 +12,20 @@ export const metadata: Metadata = {
 };
 
 export default async function InsightsPage({}) {
-    const insights = await getInsights();
+    const data = await getBlogsData();
 
     return (
         <MainSection>
             <Section>
                 <HeadSection
+                    // title={data.title || "Insights"}
+                    // description={data.description || "Enrich yourself with our opinions, tips and downloads."}
                     title="Insights"
                     description="Enrich yourself with our opinions, tips and downloads."
                 />
 
-                {insights.length > 0 ? (
-                    <InsightsList insights={insights} />
+                {data.data.length > 0 ? (
+                    <InsightsList blogs={data} />
                 ) : (
                     <div className="py-12 text-center">
                         <p className="serif text-[2rem]">
