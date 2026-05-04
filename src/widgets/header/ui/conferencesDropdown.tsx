@@ -15,7 +15,7 @@ export function ConferencesDropdown({ onClose }: { onClose: () => void }) {
                 {years.map((year) => (
                     <Link
                         key={year}
-                        href={`/conferences/nt${year}`}
+                        href={`/conferences/${year}`}
                         onClick={onClose}
                         className="group flex flex-col gap-2"
                     >

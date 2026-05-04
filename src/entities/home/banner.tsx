@@ -26,7 +26,7 @@ export const Banner = ({data}: IProps) => {
                     animate={{opacity: 1, y: 0}}
                     transition={{delay: 0.4, duration: .5}}
                 >
-                    {data.subtitle}
+                    {data.description}
                 </motion.p>
                 <motion.div
                     initial={{opacity: 0, y: -100}}

@@ -2,23 +2,29 @@
 import React, { useRef, useState, useEffect } from 'react';
 import styles from './style.module.scss';
 import { FaXTwitter, FaLinkedinIn, FaFacebookF } from "react-icons/fa6";
+import {Speaker} from "@/entities/conferences/Model/type";
 
-interface Speaker {
-    id: number;
-    name: string;
-    role: string;
-    image: string;
+// interface Speaker {
+//     id: number;
+//     name: string;
+//     role: string;
+//     image: string;
+// }
+
+// const SPEAKERS: Speaker[] = [
+//     { id: 1, name: "Jessica Thompson", role: "Chief Design Officer", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=800&h=1000&auto=format&fit=crop" },
+//     { id: 2, name: "Ethan Parker", role: "Principal Product Designer", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&h=1000&auto=format&fit=crop" },
+//     { id: 3, name: "Amanda Johnson", role: "Head of Design at Wise", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=800&h=1000&auto=format&fit=crop" },
+//     { id: 4, name: "Liam Thompson", role: "Lead Experience Designer", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800&h=1000&auto=format&fit=crop" },
+//     { id: 5, name: "Sarah Miller", role: "Creative Director", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&h=1000&auto=format&fit=crop" },
+// ];
+
+
+interface IProps {
+    data: Speaker[]
 }
 
-const SPEAKERS: Speaker[] = [
-    { id: 1, name: "Jessica Thompson", role: "Chief Design Officer", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=800&h=1000&auto=format&fit=crop" },
-    { id: 2, name: "Ethan Parker", role: "Principal Product Designer", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&h=1000&auto=format&fit=crop" },
-    { id: 3, name: "Amanda Johnson", role: "Head of Design at Wise", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=800&h=1000&auto=format&fit=crop" },
-    { id: 4, name: "Liam Thompson", role: "Lead Experience Designer", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800&h=1000&auto=format&fit=crop" },
-    { id: 5, name: "Sarah Miller", role: "Creative Director", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&h=1000&auto=format&fit=crop" },
-];
-
-export const Speakers = () => {
+export const Speakers = ({data}: IProps) => {
     // Указываем тип HTMLDivElement, чтобы не было ошибки "never"
     const scrollRef = useRef<HTMLDivElement>(null);
     const wrapperRef = useRef<HTMLDivElement>(null);
@@ -86,13 +92,13 @@ export const Speakers = () => {
                 </div>
 
                 <div className={`${styles.scrollContainer} m-auto max-w-[1680px] px-6`} ref={scrollRef}>
-                    {SPEAKERS.map((speaker) => (
+                    {data?.map((speaker) => (
                         <div key={speaker.id} className={styles.card}>
                             <div className={styles.imageWrapper}>
-                                <img src={speaker.image} alt={speaker.name} draggable="false" />
+                                <img src={speaker.image} alt={speaker.fullname} draggable="false" />
                                 <div className={styles.info}>
-                                    <h3>{speaker.name}</h3>
-                                    <p>{speaker.role}</p>
+                                    <h3>{speaker.fullname}</h3>
+                                    <p>{speaker.profession}</p>
                                 </div>
                             </div>
                             <div className={styles.socials}>

@@ -3,6 +3,7 @@ import {ParallaxGrid} from "@/shared/ui/ParallaxGrid";
 import {Section} from "@/shared/ui/section";
 import {MainSection} from "@/shared/ui/mainSection";
 import {getProjectsData} from "@/entities/works/Model/api";
+import ProjectsWrapper from "@/entities/works/projectsWrapper";
 
 
 export const metadata: Metadata = {
@@ -16,10 +17,7 @@ export default async function WorksPage() {
     return (
         <MainSection>
             <Section>
-                <ParallaxGrid projects={data}
-                              headSectionTitle="Works"
-                              headSectionDescription="Our projects, from strategy to execution. With measurable results."
-                />
+                <ProjectsWrapper projects={data}/>
             </Section>
         </MainSection>
     );

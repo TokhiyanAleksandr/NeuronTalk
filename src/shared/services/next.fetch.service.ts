@@ -1,4 +1,5 @@
-import {API_URL} from "@/shared/constants/app";
+import {API_URL, X_FRONTEND_KEY} from "@/shared/constants/app";
+import {notFound} from "next/navigation";
 class NextFetchService {
   private static isURL(url: string): boolean {
     try {
@@ -17,10 +18,40 @@ class NextFetchService {
       input: string,
       init?: RequestInit
   ): Promise<T> {
+    const headers = new Headers(init?.headers);
+    headers.set('X-FRONTEND-KEY', X_FRONTEND_KEY);
+
     const res = await fetch(NextFetchService.getURL(input), {
       ...init,
       cache: 'no-store',
       method: 'GET',
+      headers,
+    });
+    if (!res.ok) {
+      if(res.status === 404) {
+        notFound();
+      }
+
+      throw new Error('Request failed');
+    }
+
+    return res.json();
+  }
+
+  static async post<T>(
+      input: string,
+      body?: unknown,
+      init?: RequestInit
+  ): Promise<T> {
+    const headers = new Headers(init?.headers);
+    headers.set('X-FRONTEND-KEY', X_FRONTEND_KEY);
+    headers.set('Content-Type', 'application/json');
+
+    const res = await fetch(NextFetchService.getURL(input), {
+      ...init,
+      method: 'POST',
+      headers,
+      body: body ? JSON.stringify(body) : undefined,
     });
 
     if (!res.ok) {
@@ -28,13 +59,6 @@ class NextFetchService {
     }
 
     return res.json();
-  }
-
-  static async post(
-    input: string,
-    init?: RequestInit | undefined
-  ): Promise<Response> {
-    return fetch(NextFetchService.getURL(input), { ...init, method: 'POST' });
   }
 
   static async put(

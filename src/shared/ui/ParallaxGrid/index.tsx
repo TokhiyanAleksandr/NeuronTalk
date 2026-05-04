@@ -6,28 +6,27 @@ import {HeadSection} from "@/shared/ui/headSection";
 import {HeadTitle} from "@/shared/ui/headTile";
 import ProjectCard from "@/entities/works/projectCard";
 import {Project, ProjectsResponse} from "@/entities/works/Model/type";
-import {usePagination} from "@/shared/hooks/usePagination";
-import Pagination from "@/shared/ui/pagination";
 
 
 interface IProps {
     headTitle?: string,
     headSectionTitle?: string,
     headSectionDescription?: string,
-    projects: ProjectsResponse<Project>,
+    projects: ProjectsResponse,
     grayscale?: boolean
+    isHome?: boolean
 }
 
 export const ParallaxGrid = ({
                                  projects,
                                  grayscale = false,
+                                 isHome = false,
                                  headTitle,
                                  headSectionTitle,
                                  headSectionDescription
                              }: IProps) => {
-    const { data, fetchPage } =
-        usePagination<ProjectsResponse<Project>>(projects);
-    const currentItems = data.data;
+
+    const currentItems = projects.data;
     const targetRef = useRef(null);
 
     const {scrollYProgress} = useScroll({
@@ -83,7 +82,6 @@ export const ParallaxGrid = ({
                 </motion.div>
             </div>
 
-            <Pagination onPageChange={fetchPage} data={data} />
         </div>
     );
 };

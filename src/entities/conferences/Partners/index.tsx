@@ -1,21 +1,27 @@
 "use client";
-import { useEffect, useRef, useState } from 'react';
+import {useEffect, useRef, useState} from 'react';
 import Matter from 'matter-js';
 import styles from './style.module.scss';
-import { SlideButton } from "@/shared/ui/slideButton";
+import {SlideButton} from "@/shared/ui/slideButton";
+import {Partner} from "@/entities/conferences/Model/type";
+import Link from "next/link";
 
 const LOGOS_DATA = [
-    { id: 1, src: '/careers.webp' }, { id: 2, src: '/design.jpg' },
-    { id: 3, src: '/digital.jpg' }, { id: 4, src: '/careers.webp' },
-    { id: 5, src: '/design.jpg' }, { id: 6, src: '/digital.jpg' },
-    { id: 7, src: '/careers.webp' }, { id: 8, src: '/design.jpg' },
-    { id: 9, src: '/design.jpg' }, { id: 10, src: '/digital.jpg' },
-    { id: 11, src: '/careers.webp' }, { id: 12, src: '/design.jpg' },
-    { id: 13, src: '/careers.webp' }, { id: 14, src: '/design.jpg' },
-    { id: 15, src: '/digital.jpg' },
+    {id: 1, src: '/careers.webp'}, {id: 2, src: '/design.jpg'},
+    {id: 3, src: '/digital.jpg'}, {id: 4, src: '/careers.webp'},
+    {id: 5, src: '/design.jpg'}, {id: 6, src: '/digital.jpg'},
+    {id: 7, src: '/careers.webp'}, {id: 8, src: '/design.jpg'},
+    {id: 9, src: '/design.jpg'}, {id: 10, src: '/digital.jpg'},
+    {id: 11, src: '/careers.webp'}, {id: 12, src: '/design.jpg'},
+    {id: 13, src: '/careers.webp'}, {id: 14, src: '/design.jpg'},
+    {id: 15, src: '/digital.jpg'},
 ];
 
-export const Partners = () => {
+interface IProps {
+    data: Partner[]
+}
+
+export const Partners = ({data}: IProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const [isVisible, setIsVisible] = useState(false);
     const engineRef = useRef(Matter.Engine.create());
@@ -25,7 +31,7 @@ export const Partners = () => {
         if (!container) return;
         const observer = new IntersectionObserver(([entry]) => {
             if (entry.isIntersecting) setIsVisible(true);
-        }, { threshold: 0.1 });
+        }, {threshold: 0.1});
         observer.observe(container);
         return () => observer.disconnect();
     }, []);
@@ -33,7 +39,7 @@ export const Partners = () => {
     useEffect(() => {
         if (!isVisible || !containerRef.current) return;
 
-        const { World, Bodies, Runner, Events, Composite, Mouse, MouseConstraint } = Matter;
+        const {World, Bodies, Runner, Events, Composite, Mouse, MouseConstraint} = Matter;
         const engine = engineRef.current;
         const world = engine.world;
         const width = containerRef.current.clientWidth;
@@ -45,12 +51,12 @@ export const Partners = () => {
         const centerY = height - blueCircleRadius;
 
         // Стены
-        const ground = Bodies.rectangle(width / 2, height + 50, width, 100, { isStatic: true });
-        const wallL = Bodies.rectangle(-100, height / 2, 200, height, { isStatic: true });
-        const wallR = Bodies.rectangle(width + 100, height / 2, 200, height, { isStatic: true });
+        const ground = Bodies.rectangle(width / 2, height + 50, width, 100, {isStatic: true});
+        const wallL = Bodies.rectangle(-100, height / 2, 200, height, {isStatic: true});
+        const wallR = Bodies.rectangle(width + 100, height / 2, 200, height, {isStatic: true});
 
         // Препятствие (Синий круг)
-        const centerObstacle = Bodies.circle(width / 2, centerY, 205, { isStatic: true });
+        const centerObstacle = Bodies.circle(width / 2, centerY, 205, {isStatic: true});
 
         Composite.add(world, [ground, wallL, wallR, centerObstacle]);
 
@@ -74,7 +80,7 @@ export const Partners = () => {
         const mouse = Mouse.create(containerRef.current);
         const mouseConstraint = MouseConstraint.create(engine, {
             mouse: mouse,
-            constraint: { stiffness: 0.1, render: { visible: false } }
+            constraint: {stiffness: 0.1, render: {visible: false}}
         });
         Composite.add(world, mouseConstraint);
 
@@ -114,13 +120,13 @@ export const Partners = () => {
                 </div>
             </div>
 
-            {LOGOS_DATA.map((logo) => (
+            {data?.map((partner) => (
                 <div
-                    key={logo.id}
+                    key={partner.id}
                     className={styles.logoItem}
                     style={{ opacity: 0, position: 'absolute', top: 0, left: 0 }}
                 >
-                    <img src={logo.src} alt="partner" />
+                    <img src={partner.logo || ''} alt={partner.name} />
                 </div>
             ))}
         </section>

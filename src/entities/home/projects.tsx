@@ -9,8 +9,7 @@ interface IProps {
 export const Projects = ({data}: IProps) => {
     return (
         <Section>
-            {/*@ts-ignore*/}
-            <ParallaxGrid projects={data.data} grayscale={true}
+            <ParallaxGrid projects={data} grayscale={true}
                           headTitle={data.title}
             />
         </Section>

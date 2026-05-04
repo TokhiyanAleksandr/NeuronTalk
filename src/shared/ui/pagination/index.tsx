@@ -16,10 +16,17 @@ interface PaginationProps {
 
 const Pagination = ({data, onPageChange}: PaginationProps) => {
     if (data.last_page <= 1) return null;
+    const lastIndex = data.links.length - 1;
 
     return (
-        <div className="flex justify-center items-center gap-2 mt-20 flex-wrap">
-            {data.links?.map((link, i) => (
+    <div className="flex justify-center items-center gap-2 mt-20 flex-wrap">
+        {data.links?.map((link, i) => {
+            let label = link.label;
+
+            if (i === 0) label = "Previous";
+            if (i === lastIndex) label = "Next";
+
+            return (
                 <button
                     key={i}
                     disabled={!link.url}
@@ -29,10 +36,12 @@ const Pagination = ({data, onPageChange}: PaginationProps) => {
                             ? "bg-gray-400 text-white"
                             : "bg-black text-white disabled:opacity-30"
                     }`}
-                    dangerouslySetInnerHTML={{__html: link.label}}
-                />
-            ))}
-        </div>
+                >
+                    {label}
+                </button>
+            );
+        })}
+    </div>
     );
 };
 

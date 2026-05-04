@@ -71,3 +71,7 @@ export type HomeResponse = {
     blogs: BaseBlock<Blog[]>;
     get_in_touch: BaseBlock<null>;
 };
+
+export type SettingsResponse = {
+    site_logo: string;
+}

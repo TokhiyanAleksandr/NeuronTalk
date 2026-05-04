@@ -1,15 +1,15 @@
 "use client";
 
-import {IInsight} from "@/entities/insight/model";
 import {motion} from "framer-motion";
 import Link from "next/link";
 
 import {MainSection} from "@/shared/ui/mainSection";
 import {Section} from "@/shared/ui/section";
 import {HeadSection} from "@/shared/ui/headSection";
+import {Blog} from "@/entities/insight/Model/type";
 
 interface InsightContentProps {
-    insight: IInsight;
+    insight: Blog;
 }
 
 export function InsightContent({insight}: InsightContentProps) {
@@ -19,7 +19,7 @@ export function InsightContent({insight}: InsightContentProps) {
             <Section>
                 <div className="relative text-white">
                     <HeadSection
-                        title={insight.category}
+                        title={"insight.category"}
                         description={insight.title}
                         descriptionClassName="text-[4.3rem] font-medium"
                         className="max-w-[85%] text-left m-0"
@@ -57,11 +57,17 @@ export function InsightContent({insight}: InsightContentProps) {
                     <div className=" flex flex-wrap gap-x-[30px]">
                         <div className="flex flex-col gap-y-[10px] mb-[20px]">
                             <p className="text-[1rem] font-medium">Autor</p>
-                            <h4 className="serif text-[1.6rem] font-semibold">{insight.author}</h4>
+                            <h4 className="serif text-[1.6rem] font-semibold">{"insight.author"}</h4>
                         </div>
                         <div className="flex flex-col gap-y-[10px] mb-[20px]">
                             <p className="text-[1rem] font-medium">Date</p>
-                            <h4 className="serif text-[1.6rem] font-semibold">{insight.date}</h4>
+                            <h4 className="serif text-[1.6rem] font-semibold">
+                                {new Date(insight.created_at).toLocaleDateString('en-US', {
+                                    day: 'numeric',
+                                    month: 'long',
+                                    year: 'numeric',
+                                })}
+                            </h4>
                         </div>
                     </div>
                     <div className="flex gap-4">
@@ -103,19 +109,19 @@ export function InsightContent({insight}: InsightContentProps) {
                 </div>
                 <div className="w-full flex flex-col gap-y-[10px] mb-[20px]">
                     <p className="text-[1rem] font-medium">Keywords</p>
-                    <div className="flex gap-x-[15px]">
-                        {
-                            insight.keywords?.map((item, index) => {
-                                return (
-                                    <div className="bg-[#343434] py-[3px] px-[10px] text-[1.2rem] font-semibold"
-                                         key={index}>{item}</div>
-                                )
-                            })
-                        }
-                    </div>
+                    {/*<div className="flex gap-x-[15px]">*/}
+                    {/*    {*/}
+                    {/*        insight.keywords?.map((item, index) => {*/}
+                    {/*            return (*/}
+                    {/*                <div className="bg-[#343434] py-[3px] px-[10px] text-[1.2rem] font-semibold"*/}
+                    {/*                     key={index}>{item}</div>*/}
+                    {/*            )*/}
+                    {/*        })*/}
+                    {/*    }*/}
+                    {/*</div>*/}
                 </div>
                 <div>
-                    <img src={insight.image} alt="" title=""/>
+                    <img src={insight.image || ""} alt="" title=""/>
                 </div>
             </Section>
         </MainSection>

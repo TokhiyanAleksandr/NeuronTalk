@@ -13,6 +13,7 @@ interface ButtonProps {
     borderColor?: string;
     hoverTextColor?: string;
     hoverBgColor?: string;
+    disabled?: boolean;
 }
 
 export const SlideButton = ({
@@ -26,6 +27,7 @@ export const SlideButton = ({
                                 borderColor = "white",
                                 hoverTextColor = "white",
                                 hoverBgColor = "black",
+                                disabled = false
                             }: ButtonProps) => {
 
     // Определяем, какой тег использовать
@@ -42,7 +44,7 @@ export const SlideButton = ({
             "--hover-bg-color": hoverBgColor,
         } as React.CSSProperties,
         className: `relative inline-block px-8 py-4 font-bold tracking-widest uppercase text-[11px] transition-colors duration-300 group overflow-hidden ${className}`,
-        onClick: onClick,
+        onClick: disabled ? undefined : onClick,
     };
     const tagProps = isLink
         ? { href: href as string }

@@ -8,6 +8,8 @@ import { motion, AnimatePresence } from "framer-motion";
 
 // Ваши импорты
 import { NavLink, ServicesDropdown, ConferencesDropdown, getHeaderStyles } from "@/widgets/header";
+import {useQuery} from "@tanstack/react-query";
+import {getSettings} from "@/entities/home/Model/api";
 
 const navigation = [
     { name: "Services", href: "/services", hasDropdown: true, id: "services" },
@@ -19,6 +21,12 @@ const navigation = [
 ];
 
 export function Header() {
+    const { data } = useQuery({
+        queryKey: ["settings"],
+        queryFn: getSettings,
+        staleTime: 1000 * 60 * 10,
+    });
+
     const pathname = usePathname();
     const [isScrolled, setIsScrolled] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -94,7 +102,7 @@ export function Header() {
                 <Link href="/">
                     <Image
                         // src="/NeurON-logo.png"
-                        src="/logo.png"
+                        src={data?.site_logo || ''}
                         alt="Logo"
                         width={180}
                         height={50}

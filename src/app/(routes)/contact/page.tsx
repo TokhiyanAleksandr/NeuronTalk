@@ -9,7 +9,7 @@ import {LearnMoreLink} from "@/shared/ui/learnMoreLink";
 import {NeuralNetwork} from "@/shared/ui/NeuralNetwork";
 import {SocialSection} from "@/shared/ui/socialMedias";
 
-export default function ContactPage() {
+export default async function ContactPage() {
     return (
         <MainSection>
             <Section>
@@ -38,14 +38,14 @@ export default function ContactPage() {
                             <div className={styles.info}>
                                 <div className={styles.infoField}>
                                     <p>Call us</p>
-                                    <LearnMoreLink href="#">
-                                        +37433554540
+                                    <LearnMoreLink href="tel: 37494203065">
+                                        +37494203065
                                     </LearnMoreLink>
                                 </div>
                                 <div className={styles.infoField}>
                                     <p>Mail us</p>
-                                    <LearnMoreLink href="mailto:+37433554540">
-                                        aleksandr@tokhiyan.com
+                                    <LearnMoreLink href="mailto:+aramdev22@duck.com">
+                                        aramdev22@duck.com
                                     </LearnMoreLink>
                                 </div>
                                <SocialSection/>

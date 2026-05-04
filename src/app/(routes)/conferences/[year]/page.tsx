@@ -6,29 +6,37 @@ import {EventShowcase} from "@/entities/conferences/EventShowcase";
 import {UpcomingEvents} from "@/entities/conferences/UpcomingEvents";
 import {Speakers} from "@/entities/conferences/Speakers";
 import {Partners} from "@/entities/conferences/Partners";
+import {getConferenceData} from "@/entities/conferences/Model/api";
 
-export default function Nt2024() {
+interface IProps {
+    params: Promise<{ year: string }>;
+}
+
+export default async function Conference({params}: IProps) {
+    const { year } = await params;
+
+    const data = await getConferenceData('test')
     return (
         <ScrollContainer>
             <Section className={styles.slide}>
                 <div className={styles.imgBanner}>
-                    <img src="/conferences/conference.webp" alt="" title=""/>
+                    <img src={data?.main_image || ''} alt="" title=""/>
                 </div>
                 <div className={styles.bodyBanner}>
                     <div className="w-full">
-                        <h2 className={styles.title}>Discover Creative Sparks <span>Through Ideas</span> That Inspire
-                            Action</h2>
-                        <SlideButton>Get Strted</SlideButton>
+                        {/*<h2 className={styles.title}>Discover Creative Sparks <span>Through Ideas</span> That Inspire*/}
+                        {/*    Action</h2>*/}
+                        <h2 className={styles.title}>{data?.title}</h2>
+                        <SlideButton href={data?.button_link || ''}>{data?.button_title}</SlideButton>
                     </div>
                     <div className="flex justify-between pb-25 items-end">
                         <p className={styles.description}>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque autem cum debitis dicta
-                            dignissimos ea eius eum libero numquam obcaecati optio placeat possimus, praesentium quae
-                            quaerat quas, recusandae voluptatem, voluptates.
+                            {data?.description}
                         </p>
                         <div className="flex flex-col gap-y-2 max-w-[300px] text-white">
                             <AvatarStack/>
-                            <p className={styles.date}>May 24, 11:00, Holiday Inn Yerevan - Republic Square</p>
+                            <p className={styles.date}>{new Date(data?.created_at).toDateString()}</p>
+                            {/*<p className={styles.date}>May 24, 11:00, Holiday Inn Yerevan - Republic Square</p>*/}
                             <p className="text-4xl font-semibold serif">Proof Creative Sistem
                                 <svg
                                     width="40"
@@ -59,10 +67,10 @@ export default function Nt2024() {
                 <UpcomingEvents/>
             </Section>
             <Section>
-                <Speakers/>
+                <Speakers data={data?.speakers}/>
             </Section>
             <Section>
-                <Partners/>
+                <Partners data={data?.partners}/>
             </Section>
             <Footer/>
         </ScrollContainer>

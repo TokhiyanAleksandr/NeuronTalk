@@ -7,12 +7,14 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "images.unsplash.com",
+        hostname: "neurontalks.am",
+        pathname: "/storage/**",
       },
     ],
   },
   env: {
     API_URL: process.env.API_URL,
+    X_FRONTEND_KEY: process.env.X_FRONTEND_KEY,
   }
 };
 

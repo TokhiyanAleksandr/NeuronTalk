@@ -1,5 +1,5 @@
 import styles from "./style.module.scss";
-import React from "react";
+import React, {useState} from "react";
 import {placeholder} from "@babel/types";
 
 interface CustomInputProps {
@@ -11,6 +11,7 @@ interface CustomInputProps {
     rows?: number;
     onChange: (value: string | number) => void;
     placeholder?: string
+    error?: string
 }
 
 // InputField.tsx
@@ -22,7 +23,8 @@ export const InputField = ({
                                multiline = false, // Новое
                                rows = 3,          // Новое
                                onChange,
-                               placeholder
+                               placeholder,
+                               error
                            }: CustomInputProps) => {
 
     // Общая функция для обработки изменений
@@ -35,10 +37,12 @@ export const InputField = ({
         }
     };
 
+    const inputClass = `${styles.inputField} ${error ? styles.errorInput : ""}`;
+
     const commonProps = {
         value,
         onChange: handleChange,
-        className: styles.inputField, // Общий класс для рамок и шрифтов
+        className: inputClass,
     };
 
     return (
@@ -51,6 +55,9 @@ export const InputField = ({
                 <input {...commonProps} type={type} step={type === "number" ? step : undefined}
                        placeholder={placeholder}/>
             )}
+            <span className={styles.error}>
+                {error || " "}
+            </span>
         </div>
     );
 };

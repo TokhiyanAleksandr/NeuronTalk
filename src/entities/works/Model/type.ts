@@ -1,21 +1,15 @@
-export type ProjectsResponse<T> = {
-    current_page: number;
-    data: T[];
-    first_page_url: string;
-    from: number | null;
-    last_page: number;
-    last_page_url: string;
-    links: PaginationLink[];
-    next_page_url: string | null;
-    path: string;
-    per_page: number;
-    prev_page_url: string | null;
-    to: number | null;
-    total: number;
-};
+import {PaginatedResponse} from "@/shared/types/types";
 
 export type Technology = {
-        
+    id: number;
+    name: string;
+    icon: string | null;
+    created_at: string;
+    updated_at: string;
+    pivot: {
+        project_id: number;
+        technology_id: number;
+    }
 }
 
 export type Project = {
@@ -30,8 +24,4 @@ export type Project = {
     technologies: Technology[];
 };
 
-type PaginationLink = {
-    url: string | null;
-    label: string;
-    active: boolean;
-};
+export type ProjectsResponse = PaginatedResponse<Project>;
