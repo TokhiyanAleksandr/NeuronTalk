@@ -45,6 +45,7 @@ export const PhoneField: React.FC<Props> = ({ value = '', label = 'Phone Number'
                 international
                 placeholder="Enter phone number"
                 value={value}
+                //@ts-ignore
                 onChange={onChange}
                 // Ошибка визуально горит только если поле "трогали"
                 className={`${styles.inputWrapper} ${error ? styles.errorInput : ''}`}

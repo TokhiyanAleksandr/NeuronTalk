@@ -4,7 +4,6 @@ import {MainSection} from "@/shared/ui/mainSection";
 import {HeadSection} from "@/shared/ui/headSection";
 import {InsightsList} from "./insightsList";
 import {getBlogsData} from "@/entities/insight/Model/api";
-import {getInsights} from "@/entities/insight/api";
 
 export const metadata: Metadata = {
     title: "Blog | Neuron Talk",

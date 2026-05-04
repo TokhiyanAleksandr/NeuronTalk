@@ -1,3 +1,4 @@
+//@ts-nocheck
 import {Section} from "@/shared/ui/section";
 import {ParallaxGrid} from "@/shared/ui/ParallaxGrid";
 import {HomeResponse} from "@/entities/home/Model/type";

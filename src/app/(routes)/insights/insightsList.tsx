@@ -6,11 +6,11 @@ import {Blog, BlogsResponse} from "@/entities/insight/Model/type";
 import Pagination from "@/shared/ui/pagination";
 
 interface IProps {
-    blogs: BlogsResponse<Blog>
+    blogs: BlogsResponse
 }
 
 export const InsightsList = ({ blogs }: IProps) => {
-    const { data, fetchPage } = usePagination<BlogsResponse<Blog>>(blogs);
+    const { data, fetchPage } = usePagination<BlogsResponse>(blogs);
     const currentItems = data.data;
 
     return (

@@ -3,10 +3,10 @@
 import styles from "./style.module.scss";
 import Link from "next/link";
 import {motion} from "framer-motion";
-import {Service} from "@/entities/services/Model/type";
+import {IService} from "@/entities/services/Model/type";
 
 interface IProps {
-    data: Service
+    data: IService
 }
 
 const ServiceDetailsWrapper = ({data}: IProps) => {
