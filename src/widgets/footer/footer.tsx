@@ -57,7 +57,7 @@ export function Footer() {
         <div className="py-12">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <motion.div variants={itemVariants} className="col-span-1 md:col-span-1">
-            <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-50">
+            <h3 className="text-lg font-bold text-white dark:text-zinc-50">
               Neuron Talk
             </h3>
             <p className="mt-2 text-[1rem ] text-white">
@@ -77,7 +77,7 @@ export function Footer() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.5 + index * 0.1 }}
-                      className="text-sm text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
+                      className="text-sm text-white"
                       aria-label={social.label}
                   >
                     {social.icon === "twitter" && (
