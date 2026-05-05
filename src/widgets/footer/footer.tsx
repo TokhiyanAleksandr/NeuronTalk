@@ -51,7 +51,7 @@ export function Footer() {
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
       variants={containerVariants}
-      className="border-t border-zinc-200 bg-white dark:border-zinc-800 dark:bg-black"
+      className="border-t border-zinc-200 bg-black dark:border-zinc-800"
     >
       <Container>
         <div className="py-12">
