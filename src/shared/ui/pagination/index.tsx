@@ -15,12 +15,12 @@ interface PaginationProps {
 }
 
 const Pagination = ({data, onPageChange}: PaginationProps) => {
-    if (data.last_page <= 1) return null;
-    const lastIndex = data.links.length - 1;
+    if (data?.last_page <= 1) return null;
+    const lastIndex = data?.links.length - 1;
 
     return (
     <div className="flex justify-center items-center gap-2 mt-20 flex-wrap">
-        {data.links?.map((link, i) => {
+        {data?.links?.map((link, i) => {
             let label = link.label;
 
             if (i === 0) label = "Previous";

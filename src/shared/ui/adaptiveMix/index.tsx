@@ -39,12 +39,12 @@ export const AdaptiveMix = ({ data }: IProps) => {
                 className="text-center mb-10"
             >
                 <h2 className="max-w-[70%] m-auto mb-4 font-semibold leading-13.75 serif text-center text-[3rem]">
-                    {data.title}
+                    {data?.title}
                 </h2>
             </motion.div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4">
-                {data.data.map((feature, index) => (
+                {data?.data?.map((feature, index) => (
                     <motion.div
                         key={feature.title}
                         initial={{opacity: 0, y: 40}}

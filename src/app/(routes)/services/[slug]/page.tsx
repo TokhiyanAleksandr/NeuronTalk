@@ -155,7 +155,7 @@ const DATA_BY_TYPE = {
         },
         sectionTitle: "AI Automation & Growth",
         processSteps: [
-            { title: "Data Collection", description: "Analyze business data." },
+            { title: "Data Collection", description: "Analyze business data?." },
             { title: "AI Models", description: "Build predictive systems." },
             { title: "Automation", description: "Automate workflows." },
             { title: "Scaling", description: "Increase efficiency." },

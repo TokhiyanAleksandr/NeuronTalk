@@ -49,7 +49,7 @@ export function BrainsSells({data}: IProps) {
 
     const handleNext = useCallback(() => {
         setCumulativeStep((prev) => prev + 1);
-        setActiveIndex((prev) => (prev + 1) % data.data.length);
+        setActiveIndex((prev) => (prev + 1) % data?.data?.length);
         setTick((t) => t + 1);
     }, []);
 
@@ -63,7 +63,7 @@ export function BrainsSells({data}: IProps) {
 
         let diff = index - activeIndex;
         if (diff < 0) {
-            diff += data.data.length;
+            diff += data?.data?.length;
         }
 
         setCumulativeStep((prev) => prev + diff);
@@ -75,12 +75,12 @@ export function BrainsSells({data}: IProps) {
         <section className="mb-46 bg-[#1e1e1e] py-24 text-white overflow-hidden relative">
             <div
                 className="relative z-1 max-w-210 m-auto mb-[150px] flex justify-center flex-col items-center text-center px-[15px]">
-                <p className="text-[1rem] font-semibold">{data.title}</p>
-                <h2 className="serif mb-[1rem] text-[3.75rem] font-semibold">{data.subtitle}</h2>
+                <p className="text-[1rem] font-semibold">{data?.title}</p>
+                <h2 className="serif mb-[1rem] text-[3.75rem] font-semibold">{data?.subtitle}</h2>
                 <p className="font-medium text-[1.3rem] mb-[1rem]">
-                    {data.description}
+                    {data?.description}
                 </p>
-                <SlideButton href={data.button_link || ''}>{data.button_title}</SlideButton>
+                <SlideButton href={data?.button_link || ''}>{data?.button_title}</SlideButton>
             </div>
 
             <div className="relative z-1 max-w-420 m-auto px-6 lg:px-12">
@@ -99,7 +99,7 @@ export function BrainsSells({data}: IProps) {
                                 className="w-full h-full relative z-10"
                             >
                                 <svg viewBox="0 0 100 100" className="w-full h-full transform -rotate-45">
-                                    {data.data.map((step, i) => {
+                                    {data?.data?.map((step, i) => {
                                         const isActive = i === activeIndex;
                                         return (
                                             <motion.path
@@ -128,7 +128,7 @@ export function BrainsSells({data}: IProps) {
                     </div>
 
                     <div className="flex flex-col">
-                        {data.data.map((step, i) => {
+                        {data?.data?.map((step, i) => {
                             const isOpen = i === activeIndex;
                             return (
                                 <div key={step.id}>

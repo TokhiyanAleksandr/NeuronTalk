@@ -5,7 +5,7 @@ import {useRef} from "react";
 import {HeadSection} from "@/shared/ui/headSection";
 import {HeadTitle} from "@/shared/ui/headTile";
 import ProjectCard from "@/entities/works/projectCard";
-import {Project, ProjectsResponse} from "@/entities/works/Model/type";
+import {ProjectsResponse} from "@/entities/works/Model/type";
 
 
 interface IProps {
@@ -14,13 +14,11 @@ interface IProps {
     headSectionDescription?: string,
     projects: ProjectsResponse,
     grayscale?: boolean
-    isHome?: boolean
 }
 
 export const ParallaxGrid = ({
                                  projects,
                                  grayscale = false,
-                                 isHome = false,
                                  headTitle,
                                  headSectionTitle,
                                  headSectionDescription

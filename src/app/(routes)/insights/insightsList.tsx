@@ -11,7 +11,7 @@ interface IProps {
 
 export const InsightsList = ({ blogs }: IProps) => {
     const { data, fetchPage } = usePagination<BlogsResponse>(blogs);
-    const currentItems = data.data;
+    const currentItems = data?.data;
 
     return (
         <>

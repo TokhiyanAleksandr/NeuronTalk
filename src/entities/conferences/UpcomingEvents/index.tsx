@@ -39,7 +39,7 @@ export const UpcomingEvents = () => {
         };
 
         const handleEnded = () => {
-            setActiveIndex((prev) => (prev + 1) % EVENTS_DATA.length);
+            setActiveIndex((prev) => (prev + 1) % EVENTS_DATA?.length);
         };
 
         video.addEventListener('timeupdate', updateProgress);
@@ -79,7 +79,7 @@ export const UpcomingEvents = () => {
             </div>
 
             <div className={styles.thumbnails}>
-                {EVENTS_DATA.map((event, index) => {
+                {EVENTS_DATA?.map((event, index) => {
                     const isWatched = index < activeIndex;
                     const isActive = index === activeIndex;
                     const fillWidth = isWatched ? 100 : isActive ? progress : 0;

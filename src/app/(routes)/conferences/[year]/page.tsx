@@ -57,15 +57,15 @@ export default async function Conference({params}: IProps) {
                     </div>
                 </div>
             </Section>
-            <Section className={styles.bgFeatures}>
-                <Showcase/>
-            </Section>
-            <Section className={styles.bgDark}>
-                <EventShowcase/>
-            </Section>
-            <Section>
-                <UpcomingEvents/>
-            </Section>
+            {/*<Section className={styles.bgFeatures}>*/}
+            {/*    <Showcase/>*/}
+            {/*</Section>*/}
+            {/*<Section className={styles.bgDark}>*/}
+            {/*    <EventShowcase/>*/}
+            {/*</Section>*/}
+            {/*<Section>*/}
+            {/*    <UpcomingEvents/>*/}
+            {/*</Section>*/}
             <Section>
                 <Speakers data={data?.speakers}/>
             </Section>

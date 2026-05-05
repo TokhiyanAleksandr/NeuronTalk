@@ -19,22 +19,22 @@ export const Banner = ({data}: IProps) => {
                     transition={{delay: 0.4, duration: .5}}
                     className="serif"
                 >
-                    {data.title}
+                    {data?.title}
                 </motion.h1>
                 <motion.p
                     initial={{opacity: 0, y: -30}}
                     animate={{opacity: 1, y: 0}}
                     transition={{delay: 0.4, duration: .5}}
                 >
-                    {data.description}
+                    {data?.description}
                 </motion.p>
                 <motion.div
                     initial={{opacity: 0, y: -100}}
                     animate={{opacity: 1, y: 0}}
                     transition={{delay: 0.4, duration: .5}}
                 >
-                    <SlideButton href={data.button_link || ""}>
-                        {data.button_title}
+                    <SlideButton href={data?.button_link || ""}>
+                        {data?.button_title}
                     </SlideButton>
                 </motion.div>
 
@@ -45,7 +45,7 @@ export const Banner = ({data}: IProps) => {
                 transition={{duration: .7}}
                 className={style.imgContent}
             >
-                <img src={data.image || ""} alt="Banner" title="Banner"/>
+                <img src={data?.image || ""} alt="Banner" title="Banner"/>
             </motion.div>
         </div>
     );

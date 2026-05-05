@@ -20,13 +20,13 @@ export const ClientsMarquee = ({isTitle = true, data}: IProps) => {
                         <img src="/arrow-down-white.svg" alt="" title=""/>
                     </div>
                     <p className="serif text-[23px] font-medium">
-                        {data.title}
+                        {data?.title}
                     </p>
                 </div>
             }
             <div className={`w-full  pt-11.5 overflow-hidden relative `}>
                 <div className={styles.marqueeContainer}>
-                    {data.data.map((client, index) => (
+                    {data?.data?.map((client, index) => (
                         <div
                             key={index}
                             className={styles.marqueeItem}

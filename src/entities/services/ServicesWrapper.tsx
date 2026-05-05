@@ -26,7 +26,7 @@ const ServicesWrapper = ({data}: IProps) => {
                 />
 
                 <div className="flex flex-col">
-                    {data.data?.map((category, index) => {
+                    {data?.data?.map((category, index) => {
                         const isEven = index % 2 === 0;
 
                         return (

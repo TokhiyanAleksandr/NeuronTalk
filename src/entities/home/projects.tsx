@@ -11,7 +11,7 @@ export const Projects = ({data}: IProps) => {
     return (
         <Section>
             <ParallaxGrid projects={data} grayscale={true}
-                          headTitle={data.title}
+                          headTitle={data?.title}
             />
         </Section>
     );

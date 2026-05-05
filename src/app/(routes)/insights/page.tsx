@@ -17,13 +17,13 @@ export default async function InsightsPage({}) {
         <MainSection>
             <Section>
                 <HeadSection
-                    // title={data.title || "Insights"}
-                    // description={data.description || "Enrich yourself with our opinions, tips and downloads."}
+                    // title={data?.title || "Insights"}
+                    // description={data?.description || "Enrich yourself with our opinions, tips and downloads."}
                     title="Insights"
                     description="Enrich yourself with our opinions, tips and downloads."
                 />
 
-                {data.data.length > 0 ? (
+                {data?.data?.length > 0 ? (
                     <InsightsList blogs={data} />
                 ) : (
                     <div className="py-12 text-center">

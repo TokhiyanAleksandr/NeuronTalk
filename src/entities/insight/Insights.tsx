@@ -16,7 +16,7 @@ export const Insights= ({ data, title }: IProps) => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                {data.map((item, index) => (
+                {data?.map((item, index) => (
                     <InsightCard key={item.id} item={item} index={index} />
                 ))}
             </div>

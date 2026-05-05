@@ -11,7 +11,7 @@ import {getHomeData} from "@/entities/home/Model/api";
 
 export default async function Home() {
     const {banner, partners, services, projects, methodology, blogs, get_in_touch} = await getHomeData();
-    const insightsData = blogs.data.slice(0, 3);
+    const insightsData = blogs?.data?.slice(0, 3);
     return (
         <MainSection>
             <div>
@@ -20,7 +20,7 @@ export default async function Home() {
                 <AdaptiveMix data={services}/>
                 <Projects data={projects}/>
                 <BrainsSells data={methodology}/>
-                <Insights data={insightsData} title={blogs.title}/>
+                <Insights data={insightsData} title={blogs?.title}/>
                 <DigitalExperts/>
                 <DifferentBrains data={get_in_touch}/>
             </div>

@@ -61,7 +61,7 @@ export const Partners = ({data}: IProps) => {
         Composite.add(world, [ground, wallL, wallR, centerObstacle]);
 
         // Шары 180px
-        const bodies = LOGOS_DATA.map((_, i) => {
+        const bodies = data?.map((_, i) => {
             return Bodies.circle(
                 Math.random() * (width - 300) + 150, // Рандомный X
                 -200 - (i * 280),
