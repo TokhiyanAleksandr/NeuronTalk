@@ -62,7 +62,7 @@ export const AdaptiveMix = ({ data }: IProps) => {
                         style={{willChange: "transform"}}
                         className={`${colors[index]?.bgColor} group relative  shadow-sm transition-shadow h-[max-content]`}
                     >
-                        <div className="relative z-10 pt-10 px-6">
+                        <div className="relative z-10 pt-10 px-6 min-h-75">
                             <h3 className={`${colors[index].color} serif text-center font-semibold text-[1.8rem]`}>
                                 {feature.title}
                             </h3>
