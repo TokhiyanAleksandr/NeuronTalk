@@ -21,7 +21,7 @@ export default async function Home() {
                 <Projects data={projects}/>
                 <BrainsSells data={methodology}/>
                 <Insights data={insightsData} title={blogs?.title}/>
-                <DigitalExperts/>
+                {/*<DigitalExperts/>*/}
                 <DifferentBrains data={get_in_touch}/>
             </div>
         </MainSection>

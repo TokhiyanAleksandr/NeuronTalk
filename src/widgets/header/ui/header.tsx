@@ -86,7 +86,7 @@ export function Header() {
         }
         return "bg-transparent";
     };
-
+    console.log(data,'data')
     return (
         <motion.header
             initial={{ y: -100, opacity: 0 }}
@@ -100,16 +100,17 @@ export function Header() {
                 animate={{ height: isScrolled ? 60 : 80 }}
             >
                 <Link href="/">
-                    <Image
-                        // src="/NeurON-logo.png"
-                        src={data?.site_logo || ''}
-                        alt="Logo"
-                        width={180}
-                        height={50}
-                        priority
-                        className={`transition-all duration-500 ${theme.logoClass}`}
-                        style={{ transform: isScrolled ? "scale(0.85)" : "scale(1)" }}
-                    />
+                    {data?.site_logo ? (
+                        <Image
+                            src={data.site_logo}
+                            alt="Logo"
+                            width={180}
+                            height={50}
+                            priority
+                            className={`transition-all duration-500 ${theme.logoClass}`}
+                            style={{ transform: isScrolled ? "scale(0.85)" : "scale(1)" }}
+                        />
+                    ) : null}
                 </Link>
 
                 <div className="hidden items-center gap-10 md:flex" ref={navRef}>

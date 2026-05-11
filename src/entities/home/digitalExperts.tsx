@@ -67,7 +67,7 @@ export function DigitalExperts() {
                             >
                                 <div className="space-y-10">
                                     <h2 className="serif text-[3rem] text-white tracking-tighter m-0">
-                                        Digital experts
+                                        Digital expertsaaa
                                     </h2>
                                     <div className="w-20 h-[1px] bg-white/30 my-3"/>
                                     <div className="space-y-6 max-w-94">

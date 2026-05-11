@@ -101,11 +101,11 @@ export const Speakers = ({data}: IProps) => {
                                     <p>{speaker.profession}</p>
                                 </div>
                             </div>
-                            <div className={styles.socials}>
-                                <div className={styles.icon}><FaXTwitter /></div>
-                                <div className={styles.icon}><FaLinkedinIn /></div>
-                                <div className={styles.icon}><FaFacebookF /></div>
-                            </div>
+                            {/*<div className={styles.socials}>*/}
+                            {/*    <div className={styles.icon}><FaXTwitter /></div>*/}
+                            {/*    <div className={styles.icon}><FaLinkedinIn /></div>*/}
+                            {/*    <div className={styles.icon}><FaFacebookF /></div>*/}
+                            {/*</div>*/}
                         </div>
                     ))}
                 </div>

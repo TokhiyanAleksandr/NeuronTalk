@@ -47,7 +47,7 @@ export const SlideButton = ({
         onClick: disabled ? undefined : onClick,
     };
     const tagProps = isLink
-        ? { href: href as string }
+        ? { href: href as string, target: '_blank' }
         : { type: type as "button" | "submit" | "reset" };
     return (
         <Tag {...(tagProps as any)} {...commonProps}>
