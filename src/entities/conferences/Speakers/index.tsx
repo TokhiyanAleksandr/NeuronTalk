@@ -96,16 +96,17 @@ export const Speakers = ({data}: IProps) => {
                         <div key={speaker.id} className={styles.card}>
                             <div className={styles.imageWrapper}>
                                 <img src={speaker.image} alt={speaker.fullname} draggable="false" />
-                                <div className={styles.info}>
-                                    <h3>{speaker.fullname}</h3>
-                                    <p>{speaker.profession}</p>
-                                </div>
                             </div>
                             {/*<div className={styles.socials}>*/}
                             {/*    <div className={styles.icon}><FaXTwitter /></div>*/}
                             {/*    <div className={styles.icon}><FaLinkedinIn /></div>*/}
                             {/*    <div className={styles.icon}><FaFacebookF /></div>*/}
                             {/*</div>*/}
+
+                            <div className={styles.info}>
+                                <h3>{speaker.fullname}</h3>
+                                <p>{speaker.profession}</p>
+                            </div>
                         </div>
                     ))}
                 </div>

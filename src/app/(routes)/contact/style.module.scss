@@ -7,6 +7,10 @@
   isolation: isolate;
   height: 800px;
 
+  @media (max-width: 1024px) {
+    height: 1200px;
+  }
+
   /* Глубина контейнера */
   //box-shadow: 0 60px 160px rgba(0, 0, 0, 0.9),
   //0 0 0 1px rgba(255, 255, 255, 0.02),
@@ -84,6 +88,13 @@
     display: flex;
     column-gap: 50px;
     justify-content: center;
+
+    @media (max-width: 1024px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
   }
 
   .content {
@@ -102,6 +113,11 @@
       flex-direction: column;
       row-gap: 20px;
       z-index: 9;
+
+      @media (max-width: 1024px) {
+        max-width: 100%;
+      }
+
     }
 
   }

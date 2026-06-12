@@ -12,13 +12,13 @@ const footerLinks = {
     { name: "Documentation", href: "#" },
   ],
   company: [
-    { name: "About", href: "#" },
-    { name: "Blog", href: "#" },
-    { name: "Careers", href: "#" },
+    // { name: "About", href: "#" },
+    { name: "Blog", href: "insights" },
+    { name: "Careers", href: "projects" },
   ],
   legal: [
-    { name: "Privacy", href: "#" },
-    { name: "Terms", href: "#" },
+    { name: "Privacy", href: "privacy" },
+    { name: "Terms", href: "terms" },
     { name: "Cookie Policy", href: "#" },
   ],
 };
@@ -171,7 +171,7 @@ export function Footer() {
           className="mt-8 border-t border-zinc-200 pt-8 dark:border-zinc-800"
         >
             <p className="text-center text-[1rem] text-white">
-              © {new Date().getFullYear()} Neuron Talk. All rights reserved.
+              © {new Date().getFullYear()} NeruOn Talks. All rights reserved..
             </p>
         </motion.div>
         </div>

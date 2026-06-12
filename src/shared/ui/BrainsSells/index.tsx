@@ -43,20 +43,20 @@ interface IProps  {
 
 export function BrainsSells({data}: IProps) {
     const [activeIndex, setActiveIndex] = useState(0);
-
+    const length = data?.data?.length ?? 0;
     const [cumulativeStep, setCumulativeStep] = useState(0);
     const [tick, setTick] = useState(0);
 
     const handleNext = useCallback(() => {
         setCumulativeStep((prev) => prev + 1);
-        setActiveIndex((prev) => (prev + 1) % data?.data?.length);
+        setActiveIndex((prev) => (prev + 1) % length);
         setTick((t) => t + 1);
     }, []);
 
     useEffect(() => {
         const timer = setTimeout(handleNext, DURATION_MS);
         return () => clearTimeout(timer);
-    }, [tick, handleNext]);
+    }, [activeIndex]);
 
     const handleStepClick = (index: number) => {
         if (index === activeIndex) return;
@@ -74,20 +74,20 @@ export function BrainsSells({data}: IProps) {
     return (
         <section className="mb-46 bg-[#1e1e1e] py-24 text-white overflow-hidden relative">
             <div
-                className="relative z-1 max-w-210 m-auto mb-[150px] flex justify-center flex-col items-center text-center px-[15px]">
+                className="relative z-1 max-w-210 m-auto mb-16 md:mb-[150px] flex justify-center flex-col items-center text-center px-[15px]">
                 <p className="text-[1rem] font-semibold">{data?.title}</p>
-                <h2 className="serif mb-[1rem] text-[3.75rem] font-semibold">{data?.subtitle}</h2>
+                <h2 className="serif mb-4 text-2xl md:text-[3.75rem] font-semibold">{data?.subtitle}</h2>
                 <p className="font-medium text-[1.3rem] mb-[1rem]">
                     {data?.description}
                 </p>
                 <SlideButton href={data?.button_link || ''}>{data?.button_title}</SlideButton>
             </div>
 
-            <div className="relative z-1 max-w-420 m-auto px-6 lg:px-12">
+            <div className="relative z-1 max-w-[1680px] m-auto px-6 lg:px-12">
                 <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:items-center">
 
                     <div className="flex justify-center relative">
-                        <div className="relative w-[320px] h-[320px] md:w-[450px] md:h-[450px] flex items-center justify-center">
+                        <div className="relative w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] md:w-[450px] md:h-[450px] flex items-center justify-center">
 
                             <svg viewBox="0 0 100 100" className="absolute w-full h-full transform -rotate-45">
                                 <circle cx="50" cy="50" r="48" fill="#333333" />
@@ -137,7 +137,7 @@ export function BrainsSells({data}: IProps) {
                                         className="cursor-pointer w-full py-1 flex items-center gap-6 text-left group"
                                     >
                                         <OrbitDot isActive={isOpen} animationKey={tick} color={step.color}/>
-                                        <h3 className={`serif text-[2.125rem] transition-all duration-700 ${isOpen ? "text-white" : "text-white/20 group-hover:text-white/40"}`}>
+                                        <h3 className={`serif text-lg md:text-[2.125rem] transition-all duration-700 ${isOpen ? "text-white" : "text-white/20 group-hover:text-white/40"}`}>
                                             {step.title}
                                         </h3>
                                     </button>
@@ -169,7 +169,7 @@ export function BrainsSells({data}: IProps) {
                 </div>
             </div>
 
-            <div className="w-220 h-220 absolute right-0 top-0 pointer-events-none">
+            <div className="hidden lg:block w-[220px] h-[220px] absolute right-0 top-0 pointer-events-none">
                 <img src="/brainsells-brain.jpg" alt="Brain" className="opacity-50"/>
             </div>
         </section>

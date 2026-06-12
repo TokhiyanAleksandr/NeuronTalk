@@ -7,16 +7,17 @@ interface IProps {
 }
 
 export const Insights= ({ data, title }: IProps) => {
+    const items = data ?? [];
     return (
-        <section className="max-w-[1680px] m-auto px-6">
-            <div className="flex justify-between items-end mb-20">
-                <h2 className="serif text-[3.5rem] md:text-[5rem] leading-[0.9] font-medium tracking-tight">
+        <section className="w-full max-w-[1680px] mx-auto px-4 sm:px-6">
+            <div className="flex justify-between items-end mb-10 md:mb-20">
+                <h2 className="serif text-3xl md:text-[5rem] leading-[0.9] font-medium tracking-tight">
                     {title}
                 </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                {data?.map((item, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-12">
+                {items.map((item, index) => (
                     <InsightCard key={item.id} item={item} index={index} />
                 ))}
             </div>

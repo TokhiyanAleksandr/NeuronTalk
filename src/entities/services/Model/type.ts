@@ -3,6 +3,7 @@ import {PaginatedResponse} from "@/shared/types/types";
 export interface IService {
     id: number;
     title: string;
+    subTitle: string;
     slug: string;
     description: string;
     image: string;

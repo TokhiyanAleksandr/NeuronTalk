@@ -1,7 +1,7 @@
 'use client'
 
 import {motion, useScroll, useTransform} from "framer-motion";
-import {useRef} from "react";
+import {useEffect, useRef, useState} from "react";
 import {HeadSection} from "@/shared/ui/headSection";
 import {HeadTitle} from "@/shared/ui/headTile";
 import ProjectCard from "@/entities/works/projectCard";
@@ -24,8 +24,17 @@ export const ParallaxGrid = ({
                                  headSectionDescription
                              }: IProps) => {
 
-    const currentItems = projects.data;
-    const targetRef = useRef(null);
+    const currentItems = projects?.data ?? [];
+    const targetRef = useRef<HTMLDivElement | null>(null);
+    
+    const [isDesktop, setIsDesktop] = useState(false);
+
+    useEffect(() => {
+        const check = () => setIsDesktop(window.innerWidth > 768);
+        check();
+        window.addEventListener("resize", check);
+        return () => window.removeEventListener("resize", check);
+    }, []);
 
     const {scrollYProgress} = useScroll({
         target: targetRef,
@@ -66,7 +75,7 @@ export const ParallaxGrid = ({
 
                 <motion.div
                     suppressHydrationWarning
-                    style={{y: typeof window !== 'undefined' && window.innerWidth > 768 ? rightColumnY : 0}}
+                    style={{ y: isDesktop ? rightColumnY : 0 }}
                     className="flex flex-col gap-12"
                 >
                     {rightItems?.map((project, index) => (

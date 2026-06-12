@@ -1,8 +1,5 @@
 "use client"
 
-import styles from "./style.module.scss";
-import Link from "next/link";
-import {motion} from "framer-motion";
 import {IService} from "@/entities/services/Model/type";
 
 interface IProps {
@@ -12,27 +9,26 @@ interface IProps {
 const ServiceDetailsWrapper = ({data}: IProps) => {
     return (
         <>
-            <div className="bg-[#FAE232] text-black px-[10px]">
-                <div className="max-w-[1680px] m-auto  pt-[120px] ">
-                    <div className="flex  h-[1000px] ">
-                        <div className="pt-[50px] relative z-1 max-w-[1160px]">
-                            <p className="mb-15 text-[21px] uppercase font-semibold tracking-[3px]">{data?.title}</p>
-                            <h1 className="leading-20 text-black font-semibold   serif text-[80px]">
-                                data?.subTitle
-                            </h1>
-                            <p className="max-w-[825px] mt-15 text-[24px] font-medium">
-                                data?.description
+            <div className="bg-[#FAE232] text-black px-4 md:px-6 pb-16">
+                <div className="max-w-[1680px] mx-auto pt-20 md:pt-[120px]">
+                    <div className="flex flex-col 2xl:flex-row gap-0 2xl:gap-10 2xl:h-[1000px]">
+                        <div className="pt-12 relative z-10 max-w-[1160px]">
+                            <p className="mb-8 md:mb-15 text-[16px] md:text-[21px] uppercase font-semibold tracking-[3px]">
+                                {data?.title}
                             </p>
-                            {/*<p className="max-w-[825px] mt-15 text-[24px] font-medium">*/}
-                            {/*    We help you create an eye-catching way to distinguish your brand from others. For the*/}
-                            {/*    appearance*/}
-                            {/*    of companies, brands, associations, labels, products or services, we devise a unique way*/}
-                            {/*    to be*/}
-                            {/*    visible to target groups, to be recognized and to remain recognized.*/}
-                            {/*</p>*/}
+                            <h1 className="serif font-semibold text-3xl sm:text-5xl md:text-[80px] leading-tight">
+                                {data?.subTitle}
+                            </h1>
+                            <p className="max-w-[825px] mt-8 md:mt-15 text-[18px] md:text-[24px] font-medium">
+                                {data?.description}
+                            </p>
                         </div>
-                        <div className="w-[960px] h-[960px] absolute right-0">
-                            <img src={data?.image || ""} alt="" title=""/>
+                        <div className="w-full 2xl:w-[40%] 2xl:h-[60%] relative 2xl:absolute right-0 mt-10 2xl:mt-0">
+                            <img
+                                src={data?.image || ""}
+                                alt=""
+                                className="w-full h-auto object-contain"
+                            />
                         </div>
                     </div>
                 </div>

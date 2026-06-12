@@ -28,8 +28,12 @@ class NextFetchService {
       headers,
     });
     if (!res.ok) {
-      if(res.status === 404) {
-        notFound();
+      if (res.status === 404) {
+        // Временно закомментируйте это:
+        // notFound();
+
+        // Вместо этого выбросите ошибку с URL, чтобы увидеть её на экране:
+        throw new Error(`Бэкенд вернул 404 по адресу: ${NextFetchService.getURL(input)}`);
       }
 
       throw new Error('Request failed');

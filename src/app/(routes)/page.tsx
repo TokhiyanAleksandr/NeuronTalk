@@ -7,6 +7,7 @@ import {DigitalExperts} from "@/entities/home/digitalExperts";
 import {DifferentBrains} from "@/entities/home/differentBrains";
 import {Insights} from "@/entities/insight/Insights";
 import {getHomeData} from "@/entities/home/Model/api";
+import {Section} from "@/shared/ui/section";
 
 
 export default async function Home() {
@@ -20,7 +21,9 @@ export default async function Home() {
                 <AdaptiveMix data={services}/>
                 <Projects data={projects}/>
                 <BrainsSells data={methodology}/>
-                <Insights data={insightsData} title={blogs?.title}/>
+                <Section>
+                    <Insights data={insightsData} title={blogs?.title}/>
+                </Section>
                 {/*<DigitalExperts/>*/}
                 <DifferentBrains data={get_in_touch}/>
             </div>

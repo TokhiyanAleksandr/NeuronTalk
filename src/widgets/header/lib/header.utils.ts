@@ -20,3 +20,15 @@ export const getHeaderStyles = (pathname: string, isOpen: boolean, isScrolled: b
         logoClass: ""
     };
 };
+
+export function extractYear(item: { title?: string; slug?: string }): string {
+    const yearRegex = /\b(20\d{2})\b/;
+
+    const slugMatch = item?.slug?.match(yearRegex);
+    if (slugMatch) return slugMatch[1];
+
+    const titleMatch = item?.title?.match(yearRegex);
+    if (titleMatch) return titleMatch[1];
+
+    return "";
+}

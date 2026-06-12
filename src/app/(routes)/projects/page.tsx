@@ -7,7 +7,7 @@ import ProjectsWrapper from "@/entities/works/projectsWrapper";
 
 
 export const metadata: Metadata = {
-    title: "Works | Neuron Talk",
+    title: "Projects | Neuron Talk",
     description: "...",
 };
 

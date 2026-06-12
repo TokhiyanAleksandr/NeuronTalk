@@ -38,12 +38,12 @@ export const AdaptiveMix = ({ data }: IProps) => {
                 transition={{duration: 0.6}}
                 className="text-center mb-10"
             >
-                <h2 className="max-w-[70%] m-auto mb-4 font-semibold leading-13.75 serif text-center text-[3rem]">
+                <h2 className="max-w-[90%] md:max-w-[70%] m-auto mb-4 font-semibold leading-13.75 serif text-center text-[2rem] md:text-[3rem]">
                     {data?.title}
                 </h2>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4">
                 {data?.data?.map((feature, index) => (
                     <motion.div
                         key={feature.title}
@@ -62,15 +62,15 @@ export const AdaptiveMix = ({ data }: IProps) => {
                         style={{willChange: "transform"}}
                         className={`${colors[index]?.bgColor} group relative  shadow-sm transition-shadow h-[max-content]`}
                     >
-                        <div className="relative z-10 pt-10 px-6 min-h-75">
+                        <div className="relative z-10 pt-8 md:pt-10 px-4 md:px-6 min-h-[200px] md:min-h-75">
                             <h3 className={`${colors[index].color} serif text-center font-semibold text-[1.8rem]`}>
                                 {feature.title}
                             </h3>
-                            <p className={`${colors[index].color} text-center font-medium text-[1.2rem]`}>
+                            <p className={`${colors[index].color} text-center font-medium text-[1.2rem] 2xl:my-0 my-4`}>
                                 {feature.description}
                             </p>
                         </div>
-                        <div className="m-auto max-w-103.25 max-h-103.25">
+                        <div className="m-auto max-w-[220px] md:max-w-[300px] lg:max-w-103.25">
                             <img src={feature.image} alt="" title={feature.title}/>
                         </div>
                     </motion.div>

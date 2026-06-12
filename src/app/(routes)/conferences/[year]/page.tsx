@@ -14,14 +14,37 @@ interface IProps {
 
 export default async function Conference({params}: IProps) {
     const { year } = await params;
+    console.log(year, 'year')
 
-    const data = await getConferenceData('test')
+    const rawData = await getConferenceData(year);
+    console.log(rawData, 'rawData');
+
+    // ИСПРАВЛЕНО: Достаем массив из ключа rawData.data
+    const conferencesArray = rawData?.data || [];
+
+    // Ищем нужную конференцию, у которой в названии (title) или в slug есть наш год
+    const data = conferencesArray.find((item: any) =>
+        item.title?.includes(year) || item.slug?.includes(year)
+    );
+
+    // Если ничего не нашли по текущему году, берем хотя бы самую первую (как запасной вариант)
+    // или оставляем проверку на !data, если хотите строгий 404
+    if (!data) {
+        return (
+            <div className="text-white text-center py-20">
+                Конференция на {year} год не найдена в базе данных.
+            </div>
+        );
+    }
+
     return (
         <ScrollContainer>
             <Section className={styles.slide}>
-                <div className={styles.imgBanner}>
-                    <img src={data?.main_image || ''} alt="" title=""/>
-                </div>
+                {data?.main_image && (
+                    <div className={styles.imgBanner}>
+                        <img src={data.main_image} alt={data.title || ''} title=""/>
+                    </div>
+                )}
                 <div className={styles.bodyBanner}>
                     <div className="w-full">
                         {/*<h2 className={styles.title}>Discover Creative Sparks <span>Through Ideas</span> That Inspire*/}
@@ -35,7 +58,9 @@ export default async function Conference({params}: IProps) {
                         </p>
                         <div className="flex flex-col gap-y-2 max-w-[300px] text-white">
                             <AvatarStack/>
-                            <p className={styles.date}>{new Date(data?.created_at).toDateString()}</p>
+                            <p className={styles.date}>
+                                {data?.created_at ? new Date(data.created_at).toDateString() : ''}
+                            </p>
                             {/*<p className={styles.date}>May 24, 11:00, Holiday Inn Yerevan - Republic Square</p>*/}
                             <p className="text-4xl font-semibold serif">Proof Creative Sistem
                                 <svg

@@ -1,5 +1,5 @@
 import NextFetchService from "@/shared/services/next.fetch.service";
-import {ConferenceDetail, ConferencesResponse} from "@/entities/conferences/Model/type";
+import {ConferenceDetail, ConferencesResponse,IPaginatedResponse} from "@/entities/conferences/Model/type";
 
 export const getConferencesData = (): Promise<ConferencesResponse> => {
     return NextFetchService.get(
@@ -7,8 +7,9 @@ export const getConferencesData = (): Promise<ConferencesResponse> => {
     )
 };
 
-export const getConferenceData = (year: string): Promise<ConferenceDetail> => {
+export const getConferenceData = (year: string): Promise<IPaginatedResponse<ConferenceDetail>> => {
     return NextFetchService.get(
-        `/conferences/${year}`
+        // `/conferences/${year}/`
+        `/conferences?year=${year}`
     )
 };

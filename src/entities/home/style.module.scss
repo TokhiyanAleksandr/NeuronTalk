@@ -2,11 +2,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin:  auto ;
+  margin: auto;
   overflow: hidden;
 
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    text-align: center;
+  }
+
   h1 {
-    font-size: 4.5rem;
+    font-size: clamp(2.2rem, 5vw, 4.5rem);
     font-weight: 600;
     line-height: 1;
   }
@@ -16,17 +21,31 @@
     font-size: 1.125rem;
     font-weight: 600;
     max-width: 640px;
+
+    @media (max-width: 1024px) {
+      padding: 2rem 0;
+    }
   }
 
   .leftContent {
     max-width: 960px;
     padding-left: 20px;
-    margin-left: 110px;  }
+    margin-left: 110px;
+
+    @media (max-width: 1024px) {
+      margin-left: 0;
+      padding: 20px;
+    }
+  }
 
   .imgContent {
     width: 100%;
     max-width: 768px;
     margin-right: -70px;
-    //box-shadow: 0 0 3px red;
+
+    @media (max-width: 1024px) {
+      margin-right: 0;
+      max-width: 100%;
+    }
   }
 }

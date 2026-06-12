@@ -1,9 +1,8 @@
-"use client"
+"use client";
 
 import {HeadSection} from "@/shared/ui/headSection";
 import {cubicBezier, motion} from "framer-motion";
 import Image from "next/image";
-import {LearnMoreLink} from "@/shared/ui/learnMoreLink";
 import {SlideButton} from "@/shared/ui/slideButton";
 import {ServicesResponse} from "@/entities/services/Model/type";
 
@@ -13,13 +12,15 @@ const transitionBase = {
 };
 
 interface IProps {
-    data: ServicesResponse
+    data: ServicesResponse;
 }
 
 const ServicesWrapper = ({data}: IProps) => {
     return (
-        <div className="min-h-screen text-white pt-[100px] overflow-x-hidden bg-black">
-            <div className="mb-[10rem] pt-[100px]">
+        <div className="min-h-screen text-white pt-[80px] md:pt-[100px] overflow-x-hidden bg-black">
+
+            <div className="mb-20 md:mb-[10rem] pt-[60px] md:pt-[100px]">
+
                 <HeadSection
                     title="Services"
                     description="With our specialties, we offer solutions to communication issues from your organization."
@@ -32,15 +33,16 @@ const ServicesWrapper = ({data}: IProps) => {
                         return (
                             <div
                                 key={category.id}
-                                className="grid grid-cols-1 lg:grid-cols-2 items-center min-h-[70vh] lg:min-h-screen"
+                                className="grid grid-cols-1 xl:grid-cols-2 items-center min-h-[60vh] xl:min-h-screen"
                             >
+                                {/* IMAGE */}
                                 <motion.div
                                     initial={{opacity: 0, y: 120}}
                                     whileInView={{opacity: 1, y: 0}}
-                                    viewport={{once: true, margin: "-10%"}}
+                                    viewport={{once: true, amount: 0.25}}
                                     transition={transitionBase}
-                                    className={`relative w-full aspect-square lg:h-full overflow-hidden ${
-                                        !isEven ? "lg:order-2" : ""
+                                    className={`relative w-full aspect-square xl:h-full overflow-hidden ${
+                                        !isEven ? "xl:order-2" : ""
                                     }`}
                                 >
                                     <Image
@@ -48,30 +50,32 @@ const ServicesWrapper = ({data}: IProps) => {
                                         alt={category.title}
                                         fill
                                         className="object-cover transition-transform duration-[2s] hover:scale-110"
-                                        sizes="50vw"
+                                        sizes="(max-width: 1024px) 100vw, 50vw"
                                         priority={index === 0}
                                     />
                                 </motion.div>
 
+                                {/* TEXT */}
                                 <motion.div
                                     initial={{
                                         opacity: 0,
-                                        x: isEven ? 100 : -100
+                                        x: isEven ? 80 : -80,
                                     }}
                                     whileInView={{opacity: 1, x: 0}}
-                                    viewport={{once: true, margin: "-10%"}}
+                                    viewport={{once: true, amount: 0.25}}
                                     transition={{
                                         ...transitionBase,
-                                        delay: 0.15
+                                        delay: 0.15,
                                     }}
-                                    className={`p-10 lg:p-24 flex flex-col justify-center ${
-                                        !isEven ? "lg:order-1" : ""
+                                    className={`p-6 md:p-10 xl:p-24 flex flex-col justify-center ${
+                                        !isEven ? "xl:order-1" : ""
                                     }`}
                                 >
-                                    <h2 className="text-[3.5rem] serif font-medium mb-6">
+                                    <h2 className="text-2xl md:text-4xl xl:text-[3.5rem] serif font-medium mb-6">
                                         {category.title}
                                     </h2>
-                                    <p className="text-[1.3rem] text-zinc-400 leading-relaxed max-w-xl">
+
+                                    <p className="text-base md:text-lg xl:text-[1.3rem] text-zinc-400 leading-relaxed max-w-xl">
                                         {category.description}
                                     </p>
 

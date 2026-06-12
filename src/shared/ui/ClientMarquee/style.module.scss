@@ -2,21 +2,35 @@
 
 }
 
-
 .marqueeContainer {
   display: flex;
   width: max-content;
-  /* Важно: название анимации будет локальным для этого модуля */
   animation: marquee 25s linear infinite;
 
   .marqueeItem {
-    display: block;
+    display: flex;
     align-items: center;
     justify-content: center;
+
     width: 280px;
     height: 130px;
-  }
 
+    /* 🔽 RESPONSIVE */
+    @media (max-width: 1024px) {
+      width: 200px;
+      height: 100px;
+    }
+
+    @media (max-width: 768px) {
+      width: 160px;
+      height: 80px;
+    }
+
+    @media (max-width: 480px) {
+      width: 120px;
+      height: 60px;
+    }
+  }
 
   &:hover {
     animation-play-state: paused;
