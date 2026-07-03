@@ -1,4 +1,4 @@
-import {PaginatedResponse} from "@/shared/types/types";
+import { PaginatedResponse } from "@/shared/types/types";
 
 export type Conference = {
     id: number;
@@ -13,20 +13,20 @@ export type Conference = {
     button_title: string | null;
     button_link: string | null;
     main_image: string | null;
-    video_url: string | null;
+    video_url: string |null;
 };
 
 export type Speaker = {
     id: number;
     fullname: string;
-    subtitle: string;
+    subtitle: string | null;
     profession: string;
     image: string;
     created_at: string;
     updated_at: string;
     pivot: {
-        conference_id: string;
-        speaker_id: string;
+        conference_id: number;
+        speaker_id: number;
     };
 };
 
@@ -34,18 +34,18 @@ export type Partner = {
     id: number;
     name: string;
     logo: string | null;
-    link: string;
+    link: string | null;
     created_at: string;
     updated_at: string;
     pivot: {
-        conference_id: string;
-        partner_id: string;
+        conference_id: number;
+        partner_id: number;
     };
 };
 
 export type Agenda = {
     id: number;
-    conference_id: string;
+    conference_id: number;
     name: string;
     icon: string | null;
     time_from: string;
@@ -56,13 +56,21 @@ export type Agenda = {
 
 export type Section = {
     id: number;
-    conference_id: string;
+    conference_id: number;
     title: string;
     description: string;
-    image: string;
+    image: string | null;
     created_at: string;
     updated_at: string;
 };
+
+export type ConferenceDetail = Conference & {
+    speakers: Speaker[];
+    partners: Partner[];
+    agendas: Agenda[];
+    sections: Section[];
+};
+
 export interface IPaginatedResponse<T> {
     current_page: number;
     data: T[];
@@ -71,12 +79,5 @@ export interface IPaginatedResponse<T> {
     last_page_url: string;
     total: number;
 }
-export type ConferenceDetail = Conference & {
-    speakers: Speaker[];
-    partners: Partner[];
-    agendas: Agenda[];
-    sections: Section[];
-};
-
 
 export type ConferencesResponse = PaginatedResponse<Conference>;

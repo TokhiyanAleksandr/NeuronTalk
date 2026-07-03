@@ -7,9 +7,9 @@ export const getConferencesData = (): Promise<ConferencesResponse> => {
     )
 };
 
-export const getConferenceData = (year: string): Promise<IPaginatedResponse<ConferenceDetail>> => {
+export const getConferenceData = (year: string): Promise<ConferenceDetail> => {
     return NextFetchService.get(
         // `/conferences/${year}/`
-        `/conferences?year=${year}`
+        `/conferences/${year}`
     )
 };

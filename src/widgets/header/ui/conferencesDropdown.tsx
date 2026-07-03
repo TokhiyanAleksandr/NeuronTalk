@@ -13,6 +13,7 @@ export function ConferencesDropdown({ onClose }: { onClose: () => void }) {
         staleTime: 1000 * 60 * 10,
     });
 
+
     const conferencesArray = rawData?.data || [];
 
     const uniqueYears = Array.from(

@@ -14,18 +14,18 @@ interface IProps {
 
 export default async function Conference({params}: IProps) {
     const { year } = await params;
-    console.log(year, 'year')
 
-    const rawData = await getConferenceData(year);
-    console.log(rawData, 'rawData');
+    const data = await getConferenceData(year);
+
+    console.log(data, 'dasdasd')
 
     // ИСПРАВЛЕНО: Достаем массив из ключа rawData.data
-    const conferencesArray = rawData?.data || [];
+    // const conferencesArray = rawData?.data || [];
 
     // Ищем нужную конференцию, у которой в названии (title) или в slug есть наш год
-    const data = conferencesArray.find((item: any) =>
-        item.title?.includes(year) || item.slug?.includes(year)
-    );
+    // const data = conferencesArray.find((item: any) =>
+    //     item.title?.includes(year) || item.slug?.includes(year)
+    // );
 
     // Если ничего не нашли по текущему году, берем хотя бы самую первую (как запасной вариант)
     // или оставляем проверку на !data, если хотите строгий 404
