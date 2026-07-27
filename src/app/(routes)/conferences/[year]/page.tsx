@@ -36,7 +36,7 @@ export default async function Conference({params}: IProps) {
             </div>
         );
     }
-
+    console.log(data, 'data11212')
     return (
         <ScrollContainer>
             <Section className={styles.slide}>
@@ -50,35 +50,35 @@ export default async function Conference({params}: IProps) {
                         {/*<h2 className={styles.title}>Discover Creative Sparks <span>Through Ideas</span> That Inspire*/}
                         {/*    Action</h2>*/}
                         <h2 className={styles.title}>{data?.title}</h2>
-                        <SlideButton href={data?.button_link || ''}>{data?.button_title}</SlideButton>
+                        <SlideButton href={data?.video_url || ''}>{data?.button_title}</SlideButton>
                     </div>
                     <div className="flex justify-between pb-25 items-end">
                         <p className={styles.description}>
                             {data?.description}
                         </p>
-                        <div className="flex flex-col gap-y-2 max-w-[300px] text-white">
-                            <AvatarStack/>
-                            <p className={styles.date}>
-                                {data?.created_at ? new Date(data.created_at).toDateString() : ''}
-                            </p>
-                            {/*<p className={styles.date}>May 24, 11:00, Holiday Inn Yerevan - Republic Square</p>*/}
-                            <p className="text-4xl font-semibold serif">Proof Creative Sistem
-                                <svg
-                                    width="40"
-                                    height="40"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="ml-2 inline-block"
-                                >
-                                    <line x1="7" y1="17" x2="17" y2="7"></line>
-                                    <polyline points="7 7 17 7 17 17"></polyline>
-                                </svg>
-                            </p>
-                        </div>
+                        {/*<div className="flex flex-col gap-y-2 max-w-[300px] text-white">*/}
+                        {/*    <AvatarStack/>*/}
+                        {/*    <p className={styles.date}>*/}
+                        {/*        {data?.created_at ? new Date(data.created_at).toDateString() : ''}*/}
+                        {/*    </p>*/}
+                        {/*    /!*<p className={styles.date}>May 24, 11:00, Holiday Inn Yerevan - Republic Square</p>*!/*/}
+                        {/*    <p className="text-4xl font-semibold serif">Proof Creative Sistem*/}
+                        {/*        <svg*/}
+                        {/*            width="40"*/}
+                        {/*            height="40"*/}
+                        {/*            viewBox="0 0 24 24"*/}
+                        {/*            fill="none"*/}
+                        {/*            stroke="currentColor"*/}
+                        {/*            strokeWidth="2"*/}
+                        {/*            strokeLinecap="round"*/}
+                        {/*            strokeLinejoin="round"*/}
+                        {/*            className="ml-2 inline-block"*/}
+                        {/*        >*/}
+                        {/*            <line x1="7" y1="17" x2="17" y2="7"></line>*/}
+                        {/*            <polyline points="7 7 17 7 17 17"></polyline>*/}
+                        {/*        </svg>*/}
+                        {/*    </p>*/}
+                        {/*</div>*/}
                     </div>
                 </div>
             </Section>
