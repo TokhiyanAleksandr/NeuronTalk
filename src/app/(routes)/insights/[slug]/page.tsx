@@ -22,12 +22,12 @@ export async function generateMetadata({
 
   if (!insight) {
     return {
-      title: "Post not found | Neuron Talk",
+      title: "Post not found | NeurOn Talk",
     };
   }
 
   return {
-    title: `${insight.title} | Neuron Talk`,
+    title: `${insight.title} | NeurOn Talk`,
     description: insight.slug,
   };
 }
