@@ -1,0 +1,130 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  width: 100%;
+  user-select: none;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #a1a1aa; // Подгони под цвет своих лейблов
+}
+
+.select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background-color: rgba(255, 255, 255, 0.05); // Тёмный стеклянный стиль
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.25);
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+
+  &.open {
+    border-color: #6366f1; // Акцентный цвет при открытии
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+
+    .arrow {
+      transform: rotate(180deg);
+      color: #6366f1;
+    }
+  }
+
+  &.error {
+    border-color: #ef4444;
+  }
+}
+
+.selectedValue {
+  font-size: 15px;
+  color: #ffffff;
+}
+
+.placeholder {
+  font-size: 15px;
+  color: #71717a;
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a1a1aa;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Выпадающее меню */
+.dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 100%;
+  max-height: 240px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: #18181b; // Фон выпадающего меню
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  z-index: 50;
+
+  animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Кастомный скроллбар */
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+  }
+}
+
+.option {
+  padding: 12px 14px;
+  font-size: 14px;
+  color: #d4d4d8;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #fff;
+  }
+
+  &.selected {
+    background-color: rgba(99, 102, 241, 0.15);
+    color: #818cf8;
+    font-weight: 500;
+  }
+}
+
+.errorMessage {
+  font-size: 12px;
+  color: #ef4444;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

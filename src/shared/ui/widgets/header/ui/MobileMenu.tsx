@@ -6,7 +6,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import {useQuery} from "@tanstack/react-query";
 import {getServicesData} from "@/entities/services/Model/api";
 import {getConferencesData} from "@/entities/conferences/Model/api";
-import {extractYear} from "@/widgets/header/lib/header.utils";
+import {extractYear} from "@/shared/ui/widgets/header/lib/header.utils";
+// import {extractYear} from "@/widgets/header/lib/header.utils";
 
 interface NavigationItem {
     name: string;

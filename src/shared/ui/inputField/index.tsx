@@ -1,6 +1,5 @@
 import styles from "./style.module.scss";
-import React, {useState} from "react";
-import {placeholder} from "@babel/types";
+import React, { forwardRef } from "react";
 
 interface CustomInputProps {
     label?: string;
@@ -10,54 +9,69 @@ interface CustomInputProps {
     multiline?: boolean;
     rows?: number;
     onChange: (value: string | number) => void;
-    placeholder?: string
-    error?: string
+    placeholder?: string;
+    error?: string;
 }
 
-// InputField.tsx
-export const InputField = ({
-                               label,
-                               type = "text",
-                               value,
-                               step,
-                               multiline = false, // Новое
-                               rows = 3,          // Новое
-                               onChange,
-                               placeholder,
-                               error
-                           }: CustomInputProps) => {
+// Используем Union type для ref, так как компонент может быть как input, так и textarea
+export const InputField = forwardRef<HTMLInputElement | HTMLTextAreaElement, CustomInputProps>(
+    (
+        {
+            label,
+            type = "text",
+            value,
+            step,
+            multiline = false,
+            rows = 3,
+            onChange,
+            placeholder,
+            error,
+        },
+        ref
+    ) => {
+        // Общая функция для обработки изменений
+        const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+            const val = e.target.value;
+            if (type === "number") {
+                onChange(val === "" ? "" : Number(val));
+            } else {
+                onChange(val);
+            }
+        };
 
-    // Общая функция для обработки изменений
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const val = e.target.value;
-        if (type === "number") {
-            onChange(val === "" ? "" : Number(val));
-        } else {
-            onChange(val);
-        }
-    };
+        const inputClass = `${styles.inputField} ${error ? styles.errorInput : ""}`;
 
-    const inputClass = `${styles.inputField} ${error ? styles.errorInput : ""}`;
+        const commonProps = {
+            value,
+            onChange: handleChange,
+            className: inputClass,
+            placeholder,
+        };
 
-    const commonProps = {
-        value,
-        onChange: handleChange,
-        className: inputClass,
-    };
+        return (
+            <div className={styles.wrapper}>
+                {label && <label className={styles.label}>{label}</label>}
 
-    return (
-        <div className={styles.wrapper}>
-            {label && <label className={styles.label}>{label}</label>}
+                {multiline ? (
+                    <textarea
+                        {...commonProps}
+                        ref={ref as React.Ref<HTMLTextAreaElement>}
+                        rows={rows}
+                        style={{ resize: "none" }}
+                    />
+                ) : (
+                    <input
+                        {...commonProps}
+                        ref={ref as React.Ref<HTMLInputElement>}
+                        type={type}
+                        step={type === "number" ? step : undefined}
+                    />
+                )}
 
-            {multiline ? (
-                <textarea {...commonProps} rows={rows} placeholder={placeholder} style={{resize: "none"}}/>
-            ) : (
-                <input {...commonProps} type={type} step={type === "number" ? step : undefined}
-                       placeholder={placeholder}/>
-            )}
-            <span className={styles.error}>
-                {error || " "}
-            </span>
-        </div>
-    );
-};
+                {error && <span className={styles.error}>{error || " "}</span>}
+            </div>
+        );
+    }
+);
+
+InputField.displayName = "InputField";

@@ -2,11 +2,10 @@ import type {Metadata} from "next";
 import {Source_Serif_4, Barlow} from "next/font/google";
 import "./styles/globals.css";
 import "./styles/main.scss";
-import {Header} from "@/widgets/header";
 import {SmoothScrollProvider} from "@/components/smooth-scroll-provider";
 import {ReCaptchaProvider} from "@/shared/providers/ReCaptchaProvider";
-import {FooterWrapper} from "@/widgets/footer/footerWrapper";
 import {QueryProvider} from "@/shared/providers/QueryProvider";
+import {Footer, Header} from "@/shared/ui";
 
 
 const sourceSerif = Source_Serif_4({
@@ -41,7 +40,7 @@ export default function RootLayout({
                     <ReCaptchaProvider>
                         {children}
                     </ReCaptchaProvider>
-                    <FooterWrapper/>
+                    <Footer/>
                 </div>
             </QueryProvider>
         </SmoothScrollProvider>

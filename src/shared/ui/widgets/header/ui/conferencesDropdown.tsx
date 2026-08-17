@@ -2,7 +2,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import {getConferencesData} from "@/entities/conferences/Model/api";
-import {extractYear} from "@/widgets/header/lib/header.utils";
+import {extractYear} from "@/shared/ui/widgets/header/lib/header.utils";
 
 
 

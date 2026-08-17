@@ -33,7 +33,7 @@ export const Banner = ({data}: IProps) => {
                     animate={{opacity: 1, y: 0}}
                     transition={{delay: 0.4, duration: .5}}
                 >
-                    <SlideButton href={data?.button_link || ""}>
+                    <SlideButton href={"/conversion-diagnostics"}>
                         {data?.button_title}
                     </SlideButton>
                 </motion.div>

@@ -7,12 +7,12 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 
-import { NavLink, ServicesDropdown, ConferencesDropdown, getHeaderStyles } from "@/widgets/header";
 import { getSettings } from "@/entities/home/Model/api";
 
 // Импортируем наши новые мобильные компоненты
 import { BurgerButton } from "./BurgerButton";
 import { MobileMenu } from "./MobileMenu";
+import {ConferencesDropdown, getHeaderStyles, NavLink, ServicesDropdown} from "@/shared/ui/widgets/header";
 
 const navigation = [
     { name: "Services", href: "/services", hasDropdown: true, id: "services" },

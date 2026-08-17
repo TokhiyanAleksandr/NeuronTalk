@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  output: "standalone",
   env: {
     API_URL: process.env.API_URL,
     X_FRONTEND_KEY: process.env.X_FRONTEND_KEY,

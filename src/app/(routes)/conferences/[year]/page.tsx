@@ -1,7 +1,6 @@
 import {Section, ScrollContainer, AvatarStack, Showcase} from '@/entities/conferences';
 import styles from './style.module.scss';
-import {SlideButton} from "@/shared/ui/slideButton";
-import {Footer} from "@/widgets/footer/footer";
+import {SlideButton,Footer} from "@/shared/ui";
 import {EventShowcase} from "@/entities/conferences/EventShowcase";
 import {UpcomingEvents} from "@/entities/conferences/UpcomingEvents";
 import {Speakers} from "@/entities/conferences/Speakers";
@@ -17,7 +16,6 @@ export default async function Conference({params}: IProps) {
 
     const data = await getConferenceData(year);
 
-    console.log(data, 'dasdasd')
 
     // ИСПРАВЛЕНО: Достаем массив из ключа rawData.data
     // const conferencesArray = rawData?.data || [];
@@ -36,7 +34,7 @@ export default async function Conference({params}: IProps) {
             </div>
         );
     }
-    console.log(data, 'data11212')
+
     return (
         <ScrollContainer>
             <Section className={styles.slide}>

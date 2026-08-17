@@ -50,7 +50,11 @@ export const PhoneField: React.FC<Props> = ({ value = '', label = 'Phone Number'
                 // Ошибка визуально горит только если поле "трогали"
                 className={`${styles.inputWrapper} ${error ? styles.errorInput : ''}`}
             />
-            <span className={styles.errorMessage}>{error || ''}</span>
+            {
+                error &&
+                <span className={styles.errorMessage}>{error || ''}</span>
+            }
+
         </div>
     );
 };

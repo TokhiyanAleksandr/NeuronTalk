@@ -1,7 +1,7 @@
 const Terms = () => {
     return (
-        <div className="min-h-screen bg-[#0B0B0F] text-[#E5E7EB] px-6 py-12">
-            <div className="max-w-4xl mx-auto">
+        <div className="min-h-screen bg-[#0B0B0F] text-[#E5E7EB] py-20">
+            <div className="w-full max-w-[1680px] mx-auto px-[30px]">
                 <h1 className="text-4xl font-bold my-8 text-white">
                     Terms & Conditions
                 </h1>
@@ -192,7 +192,7 @@ const Terms = () => {
                         NeurOn Talks
                     </p>
 
-                    <p>Email: aramdev22@duck.com</p>
+                    <p>Email: contact@neurontalks.am</p>
                     {/*<p>Website: [Insert Website URL]</p>*/}
                 </Section>
             </div>

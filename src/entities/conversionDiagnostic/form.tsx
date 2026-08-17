@@ -1,42 +1,70 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useImperativeHandle, forwardRef } from "react";
 import { InputField } from "@/shared/ui/inputField";
 import { PhoneField } from "@/shared/ui/phoneField";
 import { SlideButton } from "@/shared/ui/slideButton";
 import styles from "./style.module.scss";
-import {sendContactData} from "@/entities/contact/Model/api";
-import {contactSchema} from "@/entities/contact/schemas";
-import {showToast} from "nextjs-toast-notify";
+import { sendConversionDiagnosticData } from "@/entities/conversionDiagnostic/Model/api";
+import { conversionDiagnosticSchema } from "@/entities/conversionDiagnostic/schemas";
+import { SelectField } from "@/shared/ui/selectField";
+import { ValidationError } from "yup";
+import { showToast } from "nextjs-toast-notify";
 
-export const Form = () => {
+const IMPROVE_OPTIONS = [
+    { value: "Generate more leads", label: "Generate more leads" },
+    { value: "Increase conversions/sales", label: "Increase conversions/sales" },
+    { value: "Improve website performance", label: "Improve website performance" },
+    { value: "Improve messaging", label: "Improve messaging" },
+];
+
+export interface FormRef {
+    focusNameInput: () => void;
+}
+
+export const Form = forwardRef<FormRef>((_, ref) => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
+    const [improve, setImprove] = useState("");
     const [message, setMessage] = useState("");
 
     const [errors, setErrors] = useState<Record<string, string>>({});
     const [loading, setLoading] = useState(false);
 
+    // Ref для первого инпута
+    const nameInputRef = useRef<HTMLInputElement>(null);
+
+    // Экспортируем метод фокуса наружу через ref
+    useImperativeHandle(ref, () => ({
+        focusNameInput: () => {
+            if (nameInputRef.current) {
+                nameInputRef.current.focus();
+            }
+        },
+    }));
+
     const validate = async () => {
         try {
-            await contactSchema.validate(
-                { name, email, phone, message },
+            await conversionDiagnosticSchema.validate(
+                { name, email, phone, improve, message },
                 { abortEarly: false }
             );
 
             setErrors({});
             return true;
-        } catch (err: any) {
-            const newErrors: Record<string, string> = {};
+        } catch (err) {
+            if (err instanceof ValidationError) { // 👈 Type guard replaces 'any'
+                const newErrors: Record<string, string> = {};
 
-            err.inner?.forEach((e: any) => {
-                if (e.path) {
-                    newErrors[e.path] = e.message;
-                }
-            });
+                err.inner.forEach((e) => {
+                    if (e.path) {
+                        newErrors[e.path] = e.message;
+                    }
+                });
 
-            setErrors(newErrors);
+                setErrors(newErrors);
+            }
             return false;
         }
     };
@@ -48,9 +76,9 @@ export const Form = () => {
         setLoading(true);
 
         try {
-            const payload = { name, email, phone, message };
+            const payload = { name, email, phone, improve, message };
 
-            const res = await sendContactData(payload);
+            const res = await sendConversionDiagnosticData(payload);
 
             showToast.success(res.message, {
                 duration: 4000,
@@ -62,13 +90,14 @@ export const Form = () => {
             setName("");
             setEmail("");
             setPhone("");
+            setImprove("");
             setMessage("");
             setErrors({});
-        }  catch (error: unknown) {
+        } catch (error: unknown) {
             const message =
-                error instanceof Error
+                error instanceof Error && error.message
                     ? error.message
-                    : "Failed to send your message";
+                    : "Failed to send";
 
             showToast.error(message, {
                 duration: 4000,
@@ -92,12 +121,14 @@ export const Form = () => {
             case "phone":
                 setPhone(value);
                 break;
+            case "improve":
+                setImprove(value);
+                break;
             case "message":
                 setMessage(value);
                 break;
         }
 
-        // ❗ убираем ошибку сразу
         setErrors((prev) => {
             const copy = { ...prev };
             delete copy[field];
@@ -108,6 +139,7 @@ export const Form = () => {
     return (
         <div className={styles.form}>
             <InputField
+                ref={nameInputRef} // 👈 Передаем ref в InputField
                 label="Name"
                 value={name}
                 placeholder="Enter name"
@@ -130,6 +162,15 @@ export const Form = () => {
                 error={errors.phone}
             />
 
+            <SelectField
+                label="Improve"
+                placeholder="What are you trying to improve?"
+                options={IMPROVE_OPTIONS}
+                value={improve}
+                onChange={(val) => updateField("improve", val)}
+                error={errors.improve}
+            />
+
             <InputField
                 label="Message"
                 multiline
@@ -141,8 +182,10 @@ export const Form = () => {
             />
 
             <SlideButton onClick={handleSubmit} disabled={loading}>
-                {loading ? "Sending..." : "Send Message"}
+                {loading ? "Sending..." : "Get Free Audit"}
             </SlideButton>
         </div>
     );
-};
+});
+
+Form.displayName = "Form";

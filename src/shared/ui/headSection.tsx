@@ -27,7 +27,7 @@ export const HeadSection = ({
                 transition={{ duration: 0.8 }}
                 className={`${className}`}
             >
-                <p className="text-[1rem] md:text-[1.2rem] tracking-[3px] font-semibold my-6 md:my-10 uppercase leading-tight">
+                <p className="text-[1rem] md:text-[1.2rem] tracking-[3px] font-semibold  md:my-10 uppercase leading-tight">
                     {title}
                 </p>
 

@@ -49,14 +49,14 @@ export default function ContactPage() {
                                     <div className={styles.infoField}>
                                         <p>Call us</p>
                                         <LearnMoreLink href="tel:+37494203065">
-                                            +37494203065
+                                            +37455705875
                                         </LearnMoreLink>
                                     </div>
 
                                     <div className={styles.infoField}>
                                         <p>Mail us</p>
-                                        <LearnMoreLink href="mailto:aramdev22@duck.com">
-                                            aramdev22@duck.com
+                                        <LearnMoreLink href="mailto:contact@neurontalks.am">
+                                            contact@neurontalks.am
                                         </LearnMoreLink>
                                     </div>
 
