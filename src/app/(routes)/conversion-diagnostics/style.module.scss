@@ -86,9 +86,11 @@
     padding-bottom: 40px;
 
     @media (max-width: 1024px) {
-      flex-direction: column;
+      flex-direction: column-reverse;
       align-items: center;
       gap: 40px;
+      width: 65%;
+      margin: auto;
     }
   }
 

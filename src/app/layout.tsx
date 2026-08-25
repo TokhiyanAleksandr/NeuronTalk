@@ -5,8 +5,14 @@ import "./styles/main.scss";
 import {SmoothScrollProvider} from "@/components/smooth-scroll-provider";
 import {ReCaptchaProvider} from "@/shared/providers/ReCaptchaProvider";
 import {QueryProvider} from "@/shared/providers/QueryProvider";
-import {Footer, Header} from "@/shared/ui";
+import {Footer, FooterWrapper, Header} from "@/shared/ui";
+import localFont from 'next/font/local';
 
+const customFont = localFont({
+    src: './fonts/Awesome-Serif-VAR-VF.ttf',
+    display: 'swap',
+    variable: '--font-awesome', // создаем CSS-переменную
+});
 
 const sourceSerif = Source_Serif_4({
     subsets: ["latin"],
@@ -31,7 +37,7 @@ export default function RootLayout({
 }>) {
 
     return (
-        <html lang="en" suppressHydrationWarning className={`${sourceSerif.variable} ${barlow.variable}`}>
+        <html lang="en" suppressHydrationWarning className={`${sourceSerif.variable} ${barlow.variable} ${customFont.variable}`}>
         <body>
         <SmoothScrollProvider>
             <QueryProvider>
@@ -40,7 +46,7 @@ export default function RootLayout({
                     <ReCaptchaProvider>
                         {children}
                     </ReCaptchaProvider>
-                    <Footer/>
+                    <FooterWrapper/>
                 </div>
             </QueryProvider>
         </SmoothScrollProvider>

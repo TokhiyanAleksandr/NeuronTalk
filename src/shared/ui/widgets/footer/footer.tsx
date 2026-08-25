@@ -138,7 +138,7 @@ export function Footer() {
 
           <motion.div variants={itemVariants} className='w-[100%] max-w-[400px]'>
             <h4 className="mb-4 text-[1.1rem] font-semibold text-white">
-              Subscribe Us
+              Subscribe for Content Updates
             </h4>
             <Subscribe/>
           </motion.div>

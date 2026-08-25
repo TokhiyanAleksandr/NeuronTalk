@@ -14,7 +14,6 @@ export default async function Home() {
     const {banner, partners, services, projects, methodology, blogs, get_in_touch} = await getHomeData();
     const insightsData = blogs?.data?.slice(0, 3);
     return (
-        <MainSection>
             <div>
                 <Banner data={banner}/>
                 <ClientsMarquee data={partners}/>
@@ -27,7 +26,6 @@ export default async function Home() {
                 {/*<DigitalExperts/>*/}
                 <DifferentBrains data={get_in_touch}/>
             </div>
-        </MainSection>
     )
         ;
 }

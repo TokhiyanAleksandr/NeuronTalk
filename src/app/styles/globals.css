@@ -8,33 +8,30 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-barlow), sans-serif;
+  --font-serif: var(--font-source-serif), serif;
+  /* Регистрируем ваш кастомный шрифт для Tailwind v4 */
+  --font-awesome: var(--font-awesome);
 }
-
 
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
-  /* Более медленный скролл */
   scroll-snap-type: y proximity;
 }
-.serif{
-  font-family: var(--font-source-serif) !important;
-}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-barlow);
+  font-family: var(--font-awesome), sans-serif; /* Применяем шрифт на весь body по умолчанию */
   overflow-x: hidden;
-  /* Более медленный и плавный скролл */
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
 }
-
 /* Замедленный скролл с более твёрдым эффектом */
 * {
   scroll-behavior: smooth;
+  font-family: var(--font-awesome) !important;
 }
 
 /* Кастомный scrollbar для лучшего визуального эффекта */
@@ -80,3 +77,4 @@ body {
     scrollbar-color: #3f3f46 transparent;
   }
 }
+

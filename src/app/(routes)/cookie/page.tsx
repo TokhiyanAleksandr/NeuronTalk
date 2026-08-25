@@ -2,26 +2,26 @@ import React from "react";
 
 const Cookie = () => {
     return (
-        <div className=" min-h-screen bg-[#0B0B0F] text-[#E5E7EB] px-[30px] py-20">
+        <div className="min-h-screen bg-[#0B0B0F] text-[#E5E7EB] px-5 sm:px-[30px] py-12 md:py-20">
             <div className="w-full max-w-[1680px] mx-auto">
-                <h1 className="text-4xl font-bold my-8 text-white">
+                <h1 className="text-3xl sm:text-4xl font-bold my-6 md:my-8 text-white">
                     Cookie Policy
                 </h1>
 
-                <p className="text-sm text-[#9CA3AF] mb-8">
+                <p className="text-base sm:text-sm text-[#9CA3AF] mb-6 md:mb-8">
                     Effective Date: August 12
                     <br />
                     Last Updated: August 12
                 </p>
 
-                <p className="mb-[#2.5rem] leading-7">
+                <p className="text-base sm:text-lg mb-8 leading-8">
                     NeurOn Talks (“we,” “our,” or “us”) uses cookies and similar
                     technologies on our website to improve website functionality,
                     understand how visitors interact with our website, and measure
                     the effectiveness of our marketing activities.
                 </p>
 
-                <p className="mb-10 leading-7">
+                <p className="text-base sm:text-lg mb-10 leading-8">
                     This Cookie Policy explains what cookies are, how we use them,
                     and the choices you have regarding their use.
                 </p>
@@ -46,7 +46,7 @@ const Cookie = () => {
                         following purposes:
                     </p>
 
-                    <h3 className="text-lg font-medium text-white mt-4 mb-2">
+                    <h3 className="text-lg sm:text-xl font-medium text-white mt-6 mb-3">
                         Strictly Necessary Cookies
                     </h3>
                     <p>
@@ -60,13 +60,13 @@ const Cookie = () => {
                         <li>Support form submissions</li>
                         <li>Enable certain technical features</li>
                     </ul>
-                    <p className="text-sm text-[#9CA3AF]">
+                    <p className="text-base sm:text-sm text-[#9CA3AF]">
                         These cookies generally cannot be disabled through our
                         website's cookie settings because they are necessary for the
                         operation of the website.
                     </p>
 
-                    <h3 className="text-lg font-medium text-white mt-6 mb-2">
+                    <h3 className="text-lg sm:text-xl font-medium text-white mt-8 mb-3">
                         Analytics & Performance Cookies
                     </h3>
                     <p>
@@ -87,7 +87,7 @@ const Cookie = () => {
                         interact with our digital experiences.
                     </p>
 
-                    <h3 className="text-lg font-medium text-white mt-6 mb-2">
+                    <h3 className="text-lg sm:text-xl font-medium text-white mt-8 mb-3">
                         Behavioral Analytics
                     </h3>
                     <p>
@@ -117,7 +117,7 @@ const Cookie = () => {
                         personal characteristics.
                     </p>
 
-                    <h3 className="text-lg font-medium text-white mt-6 mb-2">
+                    <h3 className="text-lg sm:text-xl font-medium text-white mt-8 mb-3">
                         Marketing & Advertising Cookies
                     </h3>
                     <p>
@@ -333,8 +333,12 @@ type SectionProps = {
 const Section = ({ title, children }: SectionProps) => {
     return (
         <section className="mb-10">
-            <h2 className="text-2xl font-semibold mb-4 text-white">{title}</h2>
-            <div className="space-y-3 text-[#D1D5DB] leading-7">{children}</div>
+            <h2 className="text-xl sm:text-2xl font-semibold mb-4 text-white">
+                {title}
+            </h2>
+            <div className="space-y-4 text-base text-[#D1D5DB] leading-8">
+                {children}
+            </div>
         </section>
     );
 };

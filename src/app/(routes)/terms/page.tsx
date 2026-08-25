@@ -1,25 +1,27 @@
+import React from "react";
+
 const Terms = () => {
     return (
-        <div className="min-h-screen bg-[#0B0B0F] text-[#E5E7EB] py-20">
-            <div className="w-full max-w-[1680px] mx-auto px-[30px]">
-                <h1 className="text-4xl font-bold my-8 text-white">
+        <div className="min-h-screen bg-[#0B0B0F] text-[#E5E7EB] py-12 md:py-20">
+            <div className="w-full max-w-[1680px] mx-auto px-5 sm:px-[30px]">
+                <h1 className="text-3xl sm:text-4xl font-bold my-6 md:my-8 text-white">
                     Terms & Conditions
                 </h1>
 
-                <p className="text-sm text-[#9CA3AF] mb-8">
+                <p className="text-base sm:text-sm text-[#9CA3AF] mb-6 md:mb-8">
                     Effective Date: June 6, 2026
-                    <br/>
+                    <br />
                     Last Updated: June 6, 2026
                 </p>
 
-                <p className="mb-6">
+                <p className="text-base sm:text-lg mb-6 leading-8">
                     Welcome to NeurOn Talks (“Company,” “we,” “our,” or “us”).
                     By accessing or using this website, services, content,
                     consultations, or related platforms (collectively, the “Services”),
                     you agree to comply with and be bound by these Terms & Conditions.
                 </p>
 
-                <p className="mb-10">
+                <p className="text-base sm:text-lg mb-10 leading-8">
                     If you do not agree with these Terms, please do not use this
                     website or our Services.
                 </p>
@@ -44,6 +46,7 @@ const Terms = () => {
                 </Section>
 
                 <Section title="3. Use of Website">
+                    <p className="mb-2">You agree not to:</p>
                     <ul className="list-disc pl-6 space-y-2">
                         <li>
                             Copy or reproduce website content without permission
@@ -174,8 +177,7 @@ const Terms = () => {
 
                 <Section title="17. Governing Law">
                     <p>
-                        These Terms shall be governed by the laws of:
-                        [Insert Country/State/Jurisdiction]
+                        These Terms shall be governed by the laws of Armenia.
                     </p>
                 </Section>
 
@@ -193,7 +195,6 @@ const Terms = () => {
                     </p>
 
                     <p>Email: contact@neurontalks.am</p>
-                    {/*<p>Website: [Insert Website URL]</p>*/}
                 </Section>
             </div>
         </div>
@@ -208,11 +209,11 @@ type SectionProps = {
 const Section = ({ title, children }: SectionProps) => {
     return (
         <section className="mb-10">
-            <h2 className="text-2xl font-semibold mb-4 text-white">
+            <h2 className="text-xl sm:text-2xl font-semibold mb-4 text-white">
                 {title}
             </h2>
 
-            <div className="space-y-3 text-[#D1D5DB] leading-7">
+            <div className="space-y-4 text-base text-[#D1D5DB] leading-8">
                 {children}
             </div>
         </section>
