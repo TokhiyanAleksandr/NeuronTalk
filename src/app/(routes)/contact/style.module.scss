@@ -9,6 +9,7 @@
 
   @media (max-width: 1024px) {
     min-height: 1000px;
+    padding-top: 20px;
   }
 
   /* Глубина контейнера */
@@ -106,7 +107,10 @@
     position: relative;
     width: 30%;
     @media (max-width: 1024px) {
-      width: 43%;
+      width: 100%;
+      >div:nth-child(2){
+        display: none;
+      }
     }
 
     .info {
