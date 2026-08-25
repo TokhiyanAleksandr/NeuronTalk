@@ -70,7 +70,7 @@ export const AdaptiveMix = ({ data }: IProps) => {
                                 {feature.description}
                             </p>
                         </div>
-                        <div className="m-auto max-w-[220px] md:max-w-[300px] lg:max-w-103.25">
+                        <div className="m-auto">
                             <img src={feature.image} alt="" title={feature.title}/>
                         </div>
                     </motion.div>

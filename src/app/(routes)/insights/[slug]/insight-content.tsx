@@ -19,9 +19,9 @@ export function InsightContent({insight}: InsightContentProps) {
             <Section>
                 <div className="relative text-white">
                     <HeadSection
-                        title={"insight.category"}
+                        title={""}
                         description={insight.title}
-                        descriptionClassName="text-[4.3rem] font-medium"
+                        descriptionClassName='insight-title'
                         className="max-w-[85%] text-left m-0"
                     />
                     <motion.div

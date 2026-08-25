@@ -31,7 +31,7 @@ export const HeadSection = ({
                     {title}
                 </p>
 
-                <h3 className={`serif ${descriptionClassName}`}>
+                <h3 className={`${descriptionClassName}`}>
                     {description}
                 </h3>
             </motion.div>

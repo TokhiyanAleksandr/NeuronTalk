@@ -1,6 +1,7 @@
 import {SlideButton} from "@/shared/ui/slideButton";
 import {Section} from "@/shared/ui/section";
 import {HomeResponse} from "@/entities/home/Model/type";
+import style from "./style.module.scss"
 
 interface IProps {
     data: HomeResponse['get_in_touch']
@@ -9,35 +10,35 @@ interface IProps {
 export const DifferentBrains = ({ data }: IProps) => {
     console.log(data, 'data111')
     return (
-        <div className="flex justify-center bg-[#fe968e]">
-            <Section className="mb-0! w-full flex flex-col md:flex-row items-center justify-between gap-10">
+        <div className={style.differentBrains}>
+            {/*<Section className="mb-0! w-full flex flex-col md:flex-row items-center justify-between gap-10">*/}
 
-                <div className="max-w-[700px] text-black px-4 md:px-0">
-                    <h2 className="serif text-3xl md:text-[3.75rem] leading-tight font-semibold mt-2">
+                <div className="max-w-[700px] text-black pl-15">
+                    <h2 className={style.title}>
                         {data?.title}
                     </h2>
 
-                    <p className="my-6 md:my-10 text-[1.125rem] font-medium">
+                    <p className={style.description}>
                         {data?.description}
                     </p>
 
                     <SlideButton
                         href={data?.button_link || "contact"}
                         textColor="white"
-                        bgColor="black"
-                        borderColor="black"
-                        hoverBgColor="white"
+                        bgColor="#141614"
+                        borderColor="#141614"
+                        hoverBgColor="#fff"
                         hoverTextColor="black"
                     >
                         {data?.button_title}
                     </SlideButton>
                 </div>
 
-                <div className="w-full max-w-206.5">
+                <div className="w-full">
                     <img src={data?.image || ""} alt="" />
                 </div>
 
-            </Section>
+            {/*</Section>*/}
         </div>
     );
 };

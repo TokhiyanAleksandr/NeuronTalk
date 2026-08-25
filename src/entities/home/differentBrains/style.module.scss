@@ -1,0 +1,45 @@
+.differentBrains{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:#682137 ;
+}
+.title{
+  font-size: 80px;
+ color: #f4f2a2;
+}
+.description{
+  font-size: 21px;
+margin-bottom: 20px;
+}
+
+@media (max-width: 1200px) {
+  .title{
+    font-size: 50px;
+  }
+  .description{
+    font-size: 19px;
+
+  }
+
+}
+@media (max-width: 1200px) {
+  .differentBrains{
+
+  flex-direction: column;
+  >div:first-child{
+    padding: 0 15px ;
+    margin-bottom: 15px;
+  }
+  }
+
+}
+@media (max-width: 480px) {
+  .title{
+    font-size: 35px;
+  }
+  .description{
+    font-size: 16px;
+
+  }
+}

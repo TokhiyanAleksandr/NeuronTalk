@@ -15,6 +15,7 @@ export type BaseBlock<T = unknown> = {
     image: string | null;
     button_title: string | null;
     button_link: string | null;
+    button_color: string | null;
     model_type: ModelType;
     data: T;
 };
