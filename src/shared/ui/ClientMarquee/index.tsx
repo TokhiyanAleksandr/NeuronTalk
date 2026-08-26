@@ -16,7 +16,7 @@ export const ClientsMarquee = ({isTitle = true, data}: IProps) => {
             {
                 isTitle &&
                 <div className="text-center">
-                    <div className="w-7 h-7 md:w-9 md:h-9 mb-8 md:mb-13.75 m-auto">
+                    <div className="w-7 h-7 md:w-9 md:h-9 my-5 m-auto">
                         <img src="/arrow-down-white.svg" alt="" title=""/>
                     </div>
                     <p className="serif text-[18px] md:text-[23px] font-medium">
