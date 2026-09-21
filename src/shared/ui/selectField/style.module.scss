@@ -10,7 +10,7 @@
 .label {
   font-size: 14px;
   font-weight: 500;
-  color: #a1a1aa; // Подгони под цвет своих лейблов
+  color: #a1a1aa;
 }
 
 .select {
@@ -18,7 +18,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 14px 18px;
-  background-color: rgba(255, 255, 255, 0.05); // Тёмный стеклянный стиль
+  background-color: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
   color: #fff;
@@ -31,7 +31,7 @@
   }
 
   &.open {
-    border-color: #6366f1; // Акцентный цвет при открытии
+    border-color: #6366f1;
     box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 
     .arrow {
@@ -63,7 +63,6 @@
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
-/* Выпадающее меню */
 .dropdown {
   position: absolute;
   top: calc(100% + 6px);
@@ -74,7 +73,7 @@
   margin: 0;
   padding: 6px;
   list-style: none;
-  background: #18181b; // Фон выпадающего меню
+  background: #18181b;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -83,7 +82,6 @@
 
   animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* Кастомный скроллбар */
   &::-webkit-scrollbar {
     width: 6px;
   }

@@ -17,16 +17,12 @@ export default async function Conference({params}: IProps) {
     const data = await getConferenceData(year);
 
 
-    // ИСПРАВЛЕНО: Достаем массив из ключа rawData.data
     // const conferencesArray = rawData?.data || [];
 
-    // Ищем нужную конференцию, у которой в названии (title) или в slug есть наш год
     // const data = conferencesArray.find((item: any) =>
     //     item.title?.includes(year) || item.slug?.includes(year)
     // );
 
-    // Если ничего не нашли по текущему году, берем хотя бы самую первую (как запасной вариант)
-    // или оставляем проверку на !data, если хотите строгий 404
     if (!data) {
         return (
             <div className="text-white text-center py-20">

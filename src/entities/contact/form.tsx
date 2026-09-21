@@ -97,7 +97,6 @@ export const Form = () => {
                 break;
         }
 
-        // ❗ убираем ошибку сразу
         setErrors((prev) => {
             const copy = { ...prev };
             delete copy[field];

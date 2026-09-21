@@ -37,7 +37,6 @@ export const SlideButton = ({
     const isLink = Boolean(href);
     const Tag = isLink ? Link : "button";
 
-    // Указываем нужный курсор в зависимости от disabled
     const cursorStyle = disabled ? "cursor-not-allowed opacity-60" : "cursor-pointer";
 
     const commonProps = {
@@ -59,25 +58,21 @@ export const SlideButton = ({
 
     return (
         <Tag {...(tagProps as any)} {...commonProps}>
-            {/* Фон базовый */}
             <span
                 className="absolute inset-0 transition-colors duration-300"
                 style={{ backgroundColor: "var(--bg-color)" }}
             />
 
-            {/* Slide-анимация фона (не срабатывает hover, если disabled) */}
             <span
                 className={`absolute inset-0 -translate-x-full ${!disabled ? "group-hover:translate-x-0" : ""} transition-transform duration-500 ease-[0.19,1,0.22,1]`}
                 style={{ backgroundColor: "var(--hover-bg-color)" }}
             />
 
-            {/* Бордер */}
             <span
                 className="absolute inset-0 border pointer-events-none"
                 style={{ borderColor: "var(--border-color)" }}
             />
 
-            {/* Текст */}
             <span
                 className="relative z-10 transition-colors duration-500"
                 style={{ color: "var(--text-color)" }}

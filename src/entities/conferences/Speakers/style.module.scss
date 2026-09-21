@@ -18,7 +18,7 @@
 }
 
 .wrapper {
-  position: relative; // Важно для позиционирования круга внутри
+  position: relative;
   width: 100%;
 }
 
@@ -74,7 +74,7 @@
     //border-radius: 8px;
     overflow: hidden;
     margin-bottom: 0.7rem;
-    cursor: none; // Скрываем курсор только на картинке
+    cursor: none;
 
     img {
       width: 100%;

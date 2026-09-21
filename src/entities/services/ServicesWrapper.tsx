@@ -35,7 +35,6 @@ const ServicesWrapper = ({data}: IProps) => {
                                 key={category.id}
                                 className="grid grid-cols-1 xl:grid-cols-2 items-center min-h-[60vh] xl:min-h-screen"
                             >
-                                {/* IMAGE */}
                                 <motion.div
                                     initial={{opacity: 0, y: 120}}
                                     whileInView={{opacity: 1, y: 0}}
@@ -55,7 +54,6 @@ const ServicesWrapper = ({data}: IProps) => {
                                     />
                                 </motion.div>
 
-                                {/* TEXT */}
                                 <motion.div
                                     initial={{
                                         opacity: 0,

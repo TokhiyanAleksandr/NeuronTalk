@@ -30,7 +30,6 @@ export const SelectField = ({
 
     const selectedOption = options.find((opt) => opt.value === value);
 
-    // Закрытие при клике вне компонента
     useEffect(() => {
         const handleClickOutside = (e: MouseEvent) => {
             if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
@@ -75,7 +74,6 @@ export const SelectField = ({
                 </span>
             </div>
 
-            {/* Выпадающий список */}
             {isOpen && (
                 <ul className={styles.dropdown}>
                     {options.map((option) => (

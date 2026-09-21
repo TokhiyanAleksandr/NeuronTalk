@@ -79,7 +79,6 @@ const ConversionDiagnostics = () => {
                                         </ul>
                                     </div>
 
-                                    {/* 👈 Нажатие фокусирует первый инпут */}
                                     <div
                                         className={styles.callout}
                                         onClick={handleFocusForm}

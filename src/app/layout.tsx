@@ -11,7 +11,7 @@ import localFont from 'next/font/local';
 const customFont = localFont({
     src: './fonts/Awesome-Serif-VAR-VF.ttf',
     display: 'swap',
-    variable: '--font-awesome', // создаем CSS-переменную
+    variable: '--font-awesome',
 });
 
 const sourceSerif = Source_Serif_4({

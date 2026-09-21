@@ -9,14 +9,12 @@ export function ScrollContainer({ children }: Props) {
     const containerRef = useRef<HTMLDivElement>(null);
     const isScrolling = useRef(false);
 
-    // Переменные для отслеживания свайпов на мобилках
     const touchStartY = useRef(0);
 
     useEffect(() => {
         const container = containerRef.current;
         if (!container) return;
 
-        // Универсальная функция для скролла к следующей/предыдущей секции
         const scrollToDirection = (direction: number) => {
             if (isScrolling.current) return;
 
@@ -36,17 +34,15 @@ export function ScrollContainer({ children }: Props) {
 
             setTimeout(() => {
                 isScrolling.current = false;
-            }, 400); // Увеличил таймаут для плавности анимации свайпа
+            }, 400);
         };
 
-        // Обработчик колесика мыши (для десктопа)
         const handleWheel = (e: WheelEvent) => {
             e.preventDefault();
             const direction = e.deltaY > 0 ? 1 : -1;
             scrollToDirection(direction);
         };
 
-        // Обработчики сенсорных событий (для мобилок)
         const handleTouchStart = (e: TouchEvent) => {
             touchStartY.current = e.touches[0].clientY;
         };
@@ -55,21 +51,18 @@ export function ScrollContainer({ children }: Props) {
             const touchEndY = e.changedTouches[0].clientY;
             const diff = touchStartY.current - touchEndY;
 
-            // Порог срабатывания свайпа (в пикселях), чтобы случайно не срабатывало от микро-движений
             const threshold = 50;
 
             if (Math.abs(diff) > threshold) {
-                const direction = diff > 0 ? 1 : -1; // свайп вверх (вниз страницы) или вниз (вверх страницы)
+                const direction = diff > 0 ? 1 : -1;
                 scrollToDirection(direction);
             }
         };
 
-        // Вешаем слушатели
         container.addEventListener('wheel', handleWheel, { passive: false });
         container.addEventListener('touchstart', handleTouchStart, { passive: true });
         container.addEventListener('touchend', handleTouchEnd, { passive: true });
 
-        // Очищаем слушатели при размонтировании
         return () => {
             container.removeEventListener('wheel', handleWheel);
             container.removeEventListener('touchstart', handleTouchStart);

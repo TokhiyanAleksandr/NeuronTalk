@@ -14,7 +14,6 @@ import "swiper/css/pagination";
 
 import styles from "./Showcase.module.scss";
 
-// Tvoi unikal'nye foto (bez povtorov)
 const UNIQUE_IMAGES = [
     "/conferences/conference.webp",
     "/conferences/conference.webp",
@@ -28,10 +27,9 @@ export function Showcase() {
     const [isSliderOpen, setIsSliderOpen] = useState(false);
 
     useEffect(() => {
-        // Generiruem 50 "dekorativnykh" kartochek dlya fona
         const generated = Array.from({ length: 50 }).map((_, i) => ({
             id: i,
-            src: UNIQUE_IMAGES[i % UNIQUE_IMAGES.length], // Tut oni mogut povtoryat'sya
+            src: UNIQUE_IMAGES[i % UNIQUE_IMAGES.length],
             size: i % 3 === 0 ? "large" : i % 3 === 1 ? "medium" : "small",
             x: (i % 7 * 14) + (Math.random() * 8),
             y: (Math.floor(i / 7) * 14) + (Math.random() * 8),
@@ -45,7 +43,6 @@ export function Showcase() {
 
     return (
         <section className={styles.section22}>
-            {/* Kontent */}
             <div className={styles.content}>
                 <h1 className={styles.title}>Creative Moments From <br /><span>Our Global Showcase</span></h1>
                 <button className={styles.btn} onClick={() => setIsSliderOpen(true)}>
@@ -53,7 +50,6 @@ export function Showcase() {
                 </button>
             </div>
 
-            {/* Plavayushchiy fon (50 kartochek) */}
             <div className={styles.canvas}>
                 {cards.map((card) => (
                     <motion.div
@@ -72,7 +68,6 @@ export function Showcase() {
                 ))}
             </div>
 
-            {/* SLAIDER (Otkryvaetsya pri klike) */}
             <AnimatePresence>
                 {isSliderOpen && (
                     <motion.div
@@ -97,7 +92,6 @@ export function Showcase() {
                                 centeredSlides={true}
                                 className={styles.mySwiper}
                             >
-                                {/* Tut renderim TOL'KO unikal'nye foto */}
                                 {UNIQUE_IMAGES.map((src, idx) => (
                                     <SwiperSlide key={idx} className={styles.slide}>
                                         <div className={styles.slideImgWrapper}>

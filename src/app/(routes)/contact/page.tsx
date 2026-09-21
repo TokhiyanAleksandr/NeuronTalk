@@ -30,12 +30,10 @@ export default function ContactPage() {
 
                         <div className={styles.content}>
 
-                            {/* background */}
                             <div className="absolute inset-0 z-0">
                                 <NeuralNetwork />
                             </div>
 
-                            {/* overlay */}
                             <div className={styles.overlay} style={{
                                 position: 'absolute',
                                 inset: 0,
@@ -43,7 +41,6 @@ export default function ContactPage() {
                                 zIndex: 1
                             }}/>
 
-                            {/* content */}
                             <div className="relative z-20">
                                 <div className={styles.info}>
                                     <div className={styles.infoField}>

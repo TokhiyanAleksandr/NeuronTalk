@@ -25,7 +25,6 @@ interface IProps {
 }
 
 export const Speakers = ({data}: IProps) => {
-    // Указываем тип HTMLDivElement, чтобы не было ошибки "never"
     const scrollRef = useRef<HTMLDivElement>(null);
     const wrapperRef = useRef<HTMLDivElement>(null);
 

@@ -23,7 +23,6 @@ interface MobileMenuProps {
     onClose: () => void;
 }
 
-// Простые ссылки для выпадающего списка Services
 // const servicesLinks = [
 //     { name: "Web Development", href: "/services/web-development" },
 //     { name: "UI/UX Design", href: "/services/ui-ux-design" },
@@ -31,7 +30,6 @@ interface MobileMenuProps {
 //     { name: "Branding", href: "/services/branding" },
 // ];
 
-// // Простые ссылки для выпадающего списка Conferences
 // const conferencesLinks = [
 //     { name: "Conference 2024", href: "/conferences/2024" },
 //     { name: "Conference 2025", href: "/conferences/2025" },
@@ -113,7 +111,6 @@ export function MobileMenu({ isOpen, navigation, pathname, onClose }: MobileMenu
                                                 </svg>
                                             </button>
 
-                                            {/* Красивый и плавный текстовый аккордеон */}
                                             <AnimatePresence initial={false}>
                                                 {isDropdownOpen && (
                                                     <motion.div

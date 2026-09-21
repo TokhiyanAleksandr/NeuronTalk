@@ -45,25 +45,21 @@ export const Partners = ({data}: IProps) => {
         const width = containerRef.current.clientWidth;
         const height = containerRef.current.clientHeight;
 
-        // Константы для размера 180px
         const ballRadius = 90;
-        const blueCircleRadius = 200; // Радиус для круга 400px
+        const blueCircleRadius = 200;
         const centerY = height - blueCircleRadius;
 
-        // Стены
         const ground = Bodies.rectangle(width / 2, height + 50, width, 100, {isStatic: true});
         const wallL = Bodies.rectangle(-100, height / 2, 200, height, {isStatic: true});
         const wallR = Bodies.rectangle(width + 100, height / 2, 200, height, {isStatic: true});
 
-        // Препятствие (Синий круг)
         const centerObstacle = Bodies.circle(width / 2, centerY, 205, {isStatic: true});
 
         Composite.add(world, [ground, wallL, wallR, centerObstacle]);
 
-        // Шары 180px
         const bodies = data?.map((_, i) => {
             return Bodies.circle(
-                Math.random() * (width - 300) + 150, // Рандомный X
+                Math.random() * (width - 300) + 150,
                 -200 - (i * 280),
                 ballRadius,
                 {
@@ -76,7 +72,6 @@ export const Partners = ({data}: IProps) => {
 
         Composite.add(world, bodies);
 
-        // Мышка
         const mouse = Mouse.create(containerRef.current);
         const mouseConstraint = MouseConstraint.create(engine, {
             mouse: mouse,
@@ -90,7 +85,6 @@ export const Partners = ({data}: IProps) => {
             bodies.forEach((body, i) => {
                 const el = logoElements[i] as HTMLElement;
                 if (el) {
-                    // Смещение 90 для центрирования 180-пиксельного шара
                     const x = body.position.x - ballRadius;
                     const y = body.position.y - ballRadius;
                     el.style.transform = `translate(${x}px, ${y}px) rotate(${body.angle}rad)`;

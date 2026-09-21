@@ -15,7 +15,7 @@ const EVENTS_DATA = // public/data/events.json
 export const UpcomingEvents = () => {
     const [activeIndex, setActiveIndex] = useState(0);
     const [progress, setProgress] = useState(0);
-    const [isResetting, setIsResetting] = useState(false); // Новый стейт
+    const [isResetting, setIsResetting] = useState(false);
     const videoRef = useRef<HTMLVideoElement>(null);
 
     const activeEvent = EVENTS_DATA[activeIndex];
@@ -24,12 +24,10 @@ export const UpcomingEvents = () => {
         const video = videoRef.current;
         if (!video) return;
 
-        // При смене индекса — мгновенно сбрасываем прогресс без анимации
         setIsResetting(true);
         setProgress(0);
         video.load();
 
-        // Маленький таймаут, чтобы браузер успел применить 0% без транзишна
         const timer = setTimeout(() => setIsResetting(false), 50);
 
         const updateProgress = () => {

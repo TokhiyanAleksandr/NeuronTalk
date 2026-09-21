@@ -10,7 +10,6 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-barlow), sans-serif;
   --font-serif: var(--font-source-serif), serif;
-  /* Регистрируем ваш кастомный шрифт для Tailwind v4 */
   --font-awesome: var(--font-awesome);
 }
 
@@ -23,18 +22,17 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-awesome), sans-serif; /* Применяем шрифт на весь body по умолчанию */
+  font-family: var(--font-awesome), sans-serif;
   overflow-x: hidden;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
 }
-/* Замедленный скролл с более твёрдым эффектом */
+
 * {
   scroll-behavior: smooth;
   font-family: var(--font-awesome) !important;
 }
 
-/* Кастомный scrollbar для лучшего визуального эффекта */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -63,7 +61,6 @@ body {
   }
 }
 
-/* Замедление скролла для Firefox */
 * {
   scrollbar-width: thin;
   scrollbar-color: #d4d4d8 transparent;

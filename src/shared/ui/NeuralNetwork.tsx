@@ -16,10 +16,8 @@ export const NeuralNetwork = () => {
 
         let animationFrameId: number;
         let particles: Particle[] = [];
-        const particleCount = 80; // Количество узлов
-        const connectionDistance = 120; // Дистанция для отрисовки линий
-
-        // Авто-размер под контейнер
+        const particleCount = 80;
+        const connectionDistance = 120;
         const resize = () => {
             canvas.width = canvas.offsetWidth;
             canvas.height = canvas.offsetHeight;
@@ -44,7 +42,6 @@ export const NeuralNetwork = () => {
                 this.x += this.vx;
                 this.y += this.vy;
 
-                // Отскок от краев
                 if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
                 if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
             }
@@ -73,7 +70,6 @@ export const NeuralNetwork = () => {
                 p.update();
                 p.draw();
 
-                // Рисуем линии между точками
                 for (let j = index + 1; j < particles.length; j++) {
                     const p2 = particles[j];
                     const dx = p.x - p2.x;
@@ -82,7 +78,7 @@ export const NeuralNetwork = () => {
 
                     if (distance < connectionDistance) {
                         ctx.beginPath();
-                        ctx.strokeStyle = `rgba(0, 255, 150, ${1 - distance / connectionDistance})`; // Цвет линий (бирюзовый)
+                        ctx.strokeStyle = `rgba(0, 255, 150, ${1 - distance / connectionDistance})`;
                         ctx.lineWidth = 0.5;
                         ctx.moveTo(p.x, p.y);
                         ctx.lineTo(p2.x, p2.y);

@@ -5,7 +5,6 @@ import PhoneInputWithCountry, { isValidPhoneNumber } from 'react-phone-number-in
 import 'react-phone-number-input/style.css';
 import styles from './style.module.scss';
 
-// Теперь пропсы не обязательны, так как стейт внутри
 interface Props {
     value?: string;
     label?: string;
@@ -19,14 +18,11 @@ export const PhoneField: React.FC<Props> = ({ value = '', label = 'Phone Number'
     // const handlePhoneChange = (newValue?: string) => {
     //     const phoneValue = newValue || '';
     //     setValue(phoneValue);
-    //
-    //     // Если поле пустое, мы просто сбрасываем ошибку (не пугаем пользователя)
     //     if (!phoneValue) {
     //         setError(null);
     //         return;
     //     }
     //
-    //     // Валидируем формат, только если что-то введено
     //     if (isValidPhoneNumber(phoneValue)) {
     //         setError(null);
     //     } else {
@@ -47,7 +43,6 @@ export const PhoneField: React.FC<Props> = ({ value = '', label = 'Phone Number'
                 value={value}
                 //@ts-ignore
                 onChange={onChange}
-                // Ошибка визуально горит только если поле "трогали"
                 className={`${styles.inputWrapper} ${error ? styles.errorInput : ''}`}
             />
             {

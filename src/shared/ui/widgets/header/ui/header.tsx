@@ -9,7 +9,6 @@ import { useQuery } from "@tanstack/react-query";
 
 import { getSettings } from "@/entities/home/Model/api";
 
-// Импортируем наши новые мобильные компоненты
 import { BurgerButton } from "./BurgerButton";
 import { MobileMenu } from "./MobileMenu";
 import {ConferencesDropdown, getHeaderStyles, NavLink, ServicesDropdown} from "@/shared/ui/widgets/header";
@@ -55,12 +54,10 @@ export function Header() {
         };
     }, []);
 
-    // Блокировка скролла при открытом мобильном меню
     useEffect(() => {
         document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
     }, [isMobileMenuOpen]);
 
-    // Сброс состояния меню при переходе по ссылкам
     useEffect(() => {
         setIsScrolled(false);
         setActiveDropdown(null);
@@ -99,7 +96,6 @@ export function Header() {
                     )}
                 </Link>
 
-                {/* Десктопное меню */}
                 <div className="hidden items-center gap-10 md:flex" ref={navRef}>
                     {navigation.map((item) => (
                         <NavLink
@@ -113,14 +109,12 @@ export function Header() {
                     ))}
                 </div>
 
-                {/* Мобильная кнопка бургера */}
                 <BurgerButton
                     isOpen={isMobileMenuOpen}
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 />
             </motion.nav>
 
-            {/* Десктопные дропдауны */}
             <div className="hidden md:block">
                 <AnimatePresence mode="wait">
                     {activeDropdown === "services" && <ServicesDropdown key="services" onClose={() => setActiveDropdown(null)} />}
@@ -128,7 +122,6 @@ export function Header() {
                 </AnimatePresence>
             </div>
 
-            {/* Мобильное окно навигации */}
             <MobileMenu
                 isOpen={isMobileMenuOpen}
                 navigation={navigation}

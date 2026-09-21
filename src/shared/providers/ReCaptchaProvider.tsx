@@ -1,4 +1,4 @@
-"use client"; // Обязательно
+"use client";
 
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 

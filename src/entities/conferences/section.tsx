@@ -5,7 +5,7 @@ import styles from './style.module.scss';
 
 interface SectionProps {
     children: ReactNode;
-    className?: string; // Для кастомных фонов каждой секции
+    className?: string;
 }
 
 export function Section({ children, className }: SectionProps) {
@@ -15,7 +15,7 @@ export function Section({ children, className }: SectionProps) {
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => setIsVisible(entry.isIntersecting),
-            { threshold: 0.4 } // Анимация начнется, когда 40% секции в кадре
+            { threshold: 0.4 }
         );
 
         if (sectionRef.current) observer.observe(sectionRef.current);

@@ -32,10 +32,8 @@ export const Form = forwardRef<FormRef>((_, ref) => {
     const [errors, setErrors] = useState<Record<string, string>>({});
     const [loading, setLoading] = useState(false);
 
-    // Ref для первого инпута
     const nameInputRef = useRef<HTMLInputElement>(null);
 
-    // Экспортируем метод фокуса наружу через ref
     useImperativeHandle(ref, () => ({
         focusNameInput: () => {
             if (nameInputRef.current) {
@@ -54,7 +52,7 @@ export const Form = forwardRef<FormRef>((_, ref) => {
             setErrors({});
             return true;
         } catch (err) {
-            if (err instanceof ValidationError) { // 👈 Type guard replaces 'any'
+            if (err instanceof ValidationError) {
                 const newErrors: Record<string, string> = {};
 
                 err.inner.forEach((e) => {
@@ -139,7 +137,7 @@ export const Form = forwardRef<FormRef>((_, ref) => {
     return (
         <div className={styles.form}>
             <InputField
-                ref={nameInputRef} // 👈 Передаем ref в InputField
+                ref={nameInputRef}
                 label="Name"
                 value={name}
                 placeholder="Enter name"

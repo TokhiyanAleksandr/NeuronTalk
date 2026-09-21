@@ -13,7 +13,7 @@ interface CustomInputProps {
     error?: string;
 }
 
-// Используем Union type для ref, так как компонент может быть как input, так и textarea
+
 export const InputField = forwardRef<HTMLInputElement | HTMLTextAreaElement, CustomInputProps>(
     (
         {
@@ -29,7 +29,6 @@ export const InputField = forwardRef<HTMLInputElement | HTMLTextAreaElement, Cus
         },
         ref
     ) => {
-        // Общая функция для обработки изменений
         const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
             const val = e.target.value;
             if (type === "number") {

@@ -4,7 +4,7 @@ import {
     Twitter,
     Linkedin,
     Github,
-    Send // Для Telegram
+    Send
 } from "lucide-react";
 import styles from "./style.module.scss";
 import { LearnMoreLink } from "@/shared/ui/learnMoreLink";
