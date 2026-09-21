@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 interface IProps {
     title?: string;
@@ -18,19 +18,32 @@ export const HeadSection = ({
                                 descriptionClassName = "font-semibold text-2xl md:text-4xl lg:text-[3.5rem]",
                                 sectionClassName = "mb-10 lg:mb-16 xl:mb-32",
                             }: IProps) => {
+    const [visible, setVisible] = useState(false);
+
+    useEffect(() => {
+        setVisible(false);
+
+        const timer = requestAnimationFrame(() => {
+            setVisible(true);
+        });
+
+        return () => cancelAnimationFrame(timer);
+    }, [description]);
+
     return (
         <section className={sectionClassName}>
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.8 }}
-                className={`${className}`}
+                animate={{
+                    opacity: visible ? 1 : 0,
+                    y: visible ? 0 : 30,
+                }}
+                transition={{
+                    duration: 0.8,
+                    ease: "easeOut",
+                }}
+                className={className}
             >
-                {/*<p className="text-[1rem] md:text-[1.2rem] tracking-[3px] font-semibold  md:my-10 uppercase leading-tight">*/}
-                {/*    {title}*/}
-                {/*</p>*/}
-
                 <h3 className={`pt-5 ${descriptionClassName}`}>
                     {description}
                 </h3>
