@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import React from "react";
 
 interface IProps {
-    title: string;
+    title?: string;
     description: string;
     descriptionClassName?: string;
     className?: string;
@@ -27,11 +27,11 @@ export const HeadSection = ({
                 transition={{ duration: 0.8 }}
                 className={`${className}`}
             >
-                <p className="text-[1rem] md:text-[1.2rem] tracking-[3px] font-semibold  md:my-10 uppercase leading-tight">
-                    {title}
-                </p>
+                {/*<p className="text-[1rem] md:text-[1.2rem] tracking-[3px] font-semibold  md:my-10 uppercase leading-tight">*/}
+                {/*    {title}*/}
+                {/*</p>*/}
 
-                <h3 className={`${descriptionClassName}`}>
+                <h3 className={`pt-5 ${descriptionClassName}`}>
                     {description}
                 </h3>
             </motion.div>

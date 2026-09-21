@@ -20,7 +20,7 @@ export default async function InsightsPage({}) {
                     // title={data?.title || "Insights"}
                     // description={data?.description || "Enrich yourself with our opinions, tips and downloads."}
                     title="Insights"
-                    description="Enrich yourself with our opinions, tips and downloads."
+                    description="Understand Behavior. Design for Action"
                 />
 
                 {data?.data?.length > 0 ? (

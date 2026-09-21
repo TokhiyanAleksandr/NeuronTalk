@@ -29,6 +29,7 @@ export const DifferentBrains = ({ data }: IProps) => {
                         borderColor="#141614"
                         hoverBgColor="#fff"
                         hoverTextColor="black"
+                        className="text-[20px]"
                     >
                         {data?.button_title}
                     </SlideButton>
