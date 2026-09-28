@@ -59,7 +59,7 @@ export function Footer() {
         <div className="flex-wrap flex gap-8 flex-col md:flex-row justify-between">
           <motion.div variants={itemVariants} className="col-span-1 md:col-span-1">
             <h4 className="mb-4 text-lg font-bold text-white dark:text-zinc-50">
-              NeurOn Talk
+              NeurOn Talks
             </h4>
             <p className="max-w-[330px] text-[1rem ] text-white">
               We turn websites into brain-friendly conversion machines using neuroscience, behavioral data & smart design!

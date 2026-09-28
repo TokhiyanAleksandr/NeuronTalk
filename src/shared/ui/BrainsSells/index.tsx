@@ -71,6 +71,8 @@ export function BrainsSells({data}: IProps) {
         setTick((t) => t + 1);
     };
 
+    console.log(data, 'datadata7887')
+
     return (
         <section className="mb-46 bg-[#1e1e1e] py-24 text-white overflow-hidden relative">
             <div
@@ -80,7 +82,9 @@ export function BrainsSells({data}: IProps) {
                 <p className="font-medium text-[1.3rem] mb-[1rem]">
                     {data?.description}
                 </p>
-                <SlideButton href={data?.button_link || ''}>{data?.button_title}</SlideButton>
+                <SlideButton href={data?.button_link || ''}>
+                    {data?.button_title}
+                </SlideButton>
             </div>
 
             <div className="relative z-1 max-w-[1680px] m-auto px-6 lg:px-12">

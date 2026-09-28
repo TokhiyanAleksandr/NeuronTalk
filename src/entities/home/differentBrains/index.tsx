@@ -26,10 +26,11 @@ export const DifferentBrains = ({ data }: IProps) => {
                         href={data?.button_link || "contact"}
                         textColor="white"
                         bgColor="#141614"
-                        borderColor="#141614"
+                        borderColor="#fff"
                         hoverBgColor="#fff"
                         hoverTextColor="black"
-                        className="text-[20px]"
+                        hoverBorderColor="#141614"
+                        // className="text-[20px]"
                     >
                         {data?.button_title}
                     </SlideButton>

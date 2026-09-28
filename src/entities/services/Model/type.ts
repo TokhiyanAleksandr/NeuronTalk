@@ -9,6 +9,7 @@ export interface IService {
     image: string;
     created_at: string;
     updated_at: string;
+    service_color:string
 }
 
 export type ServicesResponse = PaginatedResponse<IService>;

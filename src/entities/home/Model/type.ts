@@ -75,4 +75,5 @@ export type HomeResponse = {
 
 export type SettingsResponse = {
     site_logo: string;
+    meta_title: string;
 }

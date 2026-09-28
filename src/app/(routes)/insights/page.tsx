@@ -6,7 +6,7 @@ import {InsightsList} from "./insightsList";
 import {getBlogsData} from "@/entities/insight/Model/api";
 
 export const metadata: Metadata = {
-    title: "Blog | NeurOn Talk",
+    title: "Blog | NeurOn Talks",
     description: "Explore the latest articles on neural networks, machine learning, and artificial intelligence.",
 };
 

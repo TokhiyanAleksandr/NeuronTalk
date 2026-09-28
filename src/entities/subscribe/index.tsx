@@ -75,6 +75,7 @@ export const Subscribe = () => {
                 disabled={loading}
                 width="w-[130px]"
                 height="h-[33px]"
+                textSize="text-[14px]"
             >
                 {loading ? "Subscribing..." : "Subscribe"}
             </SlideButton>

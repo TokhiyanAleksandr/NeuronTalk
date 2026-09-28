@@ -1,12 +1,13 @@
-import type {Metadata} from "next";
-import {Source_Serif_4, Barlow} from "next/font/google";
+import type { Metadata } from "next";
+import { Source_Serif_4, Barlow } from "next/font/google";
 import "./styles/globals.css";
 import "./styles/main.scss";
-import {SmoothScrollProvider} from "@/components/smooth-scroll-provider";
-import {ReCaptchaProvider} from "@/shared/providers/ReCaptchaProvider";
-import {QueryProvider} from "@/shared/providers/QueryProvider";
-import {Footer, FooterWrapper, Header} from "@/shared/ui";
+import { SmoothScrollProvider } from "@/components/smooth-scroll-provider";
+import { ReCaptchaProvider } from "@/shared/providers/ReCaptchaProvider";
+import { QueryProvider } from "@/shared/providers/QueryProvider";
+import { FooterWrapper, Header } from "@/shared/ui";
 import localFont from 'next/font/local';
+import { getSettings } from "@/entities/home/Model/api"; // Импортируйте вашу функцию API
 
 const customFont = localFont({
     src: './fonts/Awesome-Serif-VAR-VF.ttf',
@@ -26,16 +27,25 @@ const barlow = Barlow({
     variable: "--font-barlow",
 });
 
-export const metadata: Metadata = {
-    title: "Multi-font",
-};
+export async function generateMetadata(): Promise<Metadata> {
+    try {
+        const settings = await getSettings();
+
+        return {
+            title: settings?.meta_title || "NeuronTalks",
+        };
+    } catch (error) {
+        return {
+            title: "Multi-font",
+        };
+    }
+}
 
 export default function RootLayout({
                                        children,
                                    }: Readonly<{
     children: React.ReactNode;
 }>) {
-
     return (
         <html lang="en" suppressHydrationWarning className={`${sourceSerif.variable} ${barlow.variable} ${customFont.variable}`}>
         <body>

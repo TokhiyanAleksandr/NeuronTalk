@@ -3,34 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { LearnMoreLink } from "@/shared/ui/learnMoreLink";
-import {useEffect, useState} from "react";
 import {getServicesData} from "@/entities/services/Model/api";
 import {useQuery} from "@tanstack/react-query";
-
-const services = [
-    { id: "strategy", title: "Neuromarketing Strategy", href: "/services/strategy", color: "#fff", bgColor: "#041547", image: "/strategy-head.jpg" },
-    { id: "digital", title: "Website Creation", href: "/services/digital", color: "#fff", bgColor: "#00A8AA", image: "/digital-head.png" },
-    { id: "design", title: "UX/UI Design", href: "/services/design", color: "#000", bgColor: "#FAE232", image: "/design-head.jpg" },
-    { id: "human", title: "AI-Powered Growth & Automation", href: "/services/human", color: "#000", bgColor: "#FF968D", image: "/human-head.jpg" },
-];
-const colors = [
-    {
-        color: "fff",
-        bgColor: "#041547"
-    },
-    {
-        color: "#fff",
-        bgColor: "#00A8AA"
-    },
-    {
-        color: "#000",
-        bgColor: "#FAE232"
-    },
-    {
-        color: "#000",
-        bgColor: "#FF968D"
-    }
-]
 
 
 export function ServicesDropdown({ onClose }: { onClose: () => void }) {
@@ -40,6 +14,7 @@ export function ServicesDropdown({ onClose }: { onClose: () => void }) {
         queryFn: getServicesData,
         staleTime: 1000 * 60 * 10,
     });
+    console.log(data, 'data888')
     return (
         <motion.div
             initial={{ opacity: 0, y: -10 }}
@@ -53,7 +28,7 @@ export function ServicesDropdown({ onClose }: { onClose: () => void }) {
                     <Link
                         key={service.id}
                         href={`/services/${service.slug}`}
-                        style={{ backgroundColor: colors[index].bgColor }}
+                        style={{ backgroundColor: service.service_color }}
                         className="group relative overflow-hidden flex items-center justify-center transition-transform hover:z-10"
                         onClick={onClose}
                     >
@@ -64,7 +39,7 @@ export function ServicesDropdown({ onClose }: { onClose: () => void }) {
                             className="object-cover opacity-60 transition-transform duration-700 group-hover:scale-110 group-hover:opacity-100"
                         />
                         <div className="relative z-20 text-center">
-                            <h3 className="serif text-3xl font-medium" style={{ color: colors[index].color }}>
+                            <h3 className="serif text-3xl font-medium" style={{ color: '#000' }}>
                                 {service.title}
                             </h3>
                         </div>
