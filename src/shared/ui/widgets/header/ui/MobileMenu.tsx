@@ -169,10 +169,6 @@ export function MobileMenu({ isOpen, navigation, pathname, onClose }: MobileMenu
                             );
                         })}
                     </div>
-
-                    <div className="mt-12 pt-6 border-t border-white/10 text-center text-sm text-gray-500 tracking-wider font-light">
-                        <p>PROOF CREATIVE SYSTEM</p>
-                    </div>
                 </motion.div>
             )}
         </AnimatePresence>

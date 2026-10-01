@@ -37,6 +37,7 @@ export type Service = {
     image: string;
     created_at: string;
     updated_at: string;
+    service_color: string;
 };
 
 export type Project = {
