@@ -12,9 +12,10 @@ const nextConfig: NextConfig = {
     ],
   },
   output: "standalone",
+  // Передаем переменные, которые реально используются в коде:
   env: {
-    API_URL: process.env.API_URL,
-    X_FRONTEND_KEY: process.env.X_FRONTEND_KEY,
+    API_URL: process.env.NEXT_PUBLIC_API_URL,
+    X_FRONTEND_KEY: process.env.NEXT_PUBLIC_X_FRONTEND_KEY,
   }
 };
 
