@@ -88,10 +88,9 @@ export default async function Conference({params}: IProps) {
             <Section>
                 <Speakers data={data?.speakers}/>
             </Section>
-{/*            <Section>
-                <Partners data={data?.partners}/>
-            </Section>*/}
-            <Footer/>
+            <Section>
+                <Footer/>
+            </Section>
         </ScrollContainer>
     );
 }
