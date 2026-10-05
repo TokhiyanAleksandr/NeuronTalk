@@ -29,7 +29,7 @@ const ServicesWrapper = ({data}: IProps) => {
                 <div className="flex flex-col">
                     {data?.data?.map((category, index) => {
                         const isEven = index % 2 === 0;
-
+                        console.log(category, 'category')
                         return (
                             <div
                                 key={category.id}
@@ -86,7 +86,7 @@ const ServicesWrapper = ({data}: IProps) => {
                                     {/*</ul>*/}
 
                                     <div className="pt-6">
-                                        <SlideButton href={`/services/${category.id}`}>
+                                        <SlideButton href={`/services/${category.slug}`}>
                                             View {category.title}
                                         </SlideButton>
                                     </div>

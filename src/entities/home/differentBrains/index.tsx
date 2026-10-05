@@ -8,7 +8,6 @@ interface IProps {
 }
 
 export const DifferentBrains = ({ data }: IProps) => {
-    console.log(data, 'data111')
     return (
         <div className={style.differentBrains}>
             {/*<Section className="mb-0! w-full flex flex-col md:flex-row items-center justify-between gap-10">*/}

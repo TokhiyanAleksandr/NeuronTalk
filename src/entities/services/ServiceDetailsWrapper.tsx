@@ -7,7 +7,7 @@ interface IProps {
 }
 
 const ServiceDetailsWrapper = ({data}: IProps) => {
-    console.log(data, 'data6556561')
+
     return (
         <>
             <div className={` text-black px-4 md:px-6 pb-16`} style={{backgroundColor: data?.service_color}}>

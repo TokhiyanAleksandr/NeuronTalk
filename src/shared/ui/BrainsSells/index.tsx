@@ -71,7 +71,6 @@ export function BrainsSells({data}: IProps) {
         setTick((t) => t + 1);
     };
 
-    console.log(data, 'datadata7887')
 
     return (
         <section className="mb-46 bg-[#1e1e1e] py-24 text-white overflow-hidden relative">

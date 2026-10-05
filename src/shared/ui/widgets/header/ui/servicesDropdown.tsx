@@ -14,7 +14,6 @@ export function ServicesDropdown({ onClose }: { onClose: () => void }) {
         queryFn: getServicesData,
         staleTime: 1000 * 60 * 10,
     });
-    console.log(data, 'data888')
     return (
         <motion.div
             initial={{ opacity: 0, y: -10 }}
